@@ -92,6 +92,33 @@
           (3)拔掉USB重新開機，改由硬碟開機，這時候可以像操作Android一般，於設定功能中，將Linux安裝完成，這又就可以使用Google包裝的Linux版本<BR>
         </div>
       </div>
+      <div class="row">
+        <div class="col-3 py-3 border bg-light">
+          一、Chrome OS Linux安裝OpenJDK<BR>
+          二、Chroms OS Linux安裝mongoDB<BR>
+        </div>
+        <div class="col py-3 border bg-light">
+          一、OpenJDK<BR>
+          (1)sudo apt-get update<BR>
+          (2)sudo apt-get upgrade<BR>
+          (3)sudo apt-get install openjdk-8-jdk<BR>
+          二、mongoDB<BR>
+          (1)以下是針對ChromOS的Linux進行安裝<BR>
+          (2)主要安裝程序是參考https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/<BR>
+          (3)指令：apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927<BR>
+          (4)指令：echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list<BR>
+          (5)指令：apt-get update<BR>
+          (6)指令：apt-get install -y mongodb<BR>
+             PS.官方文件ubuntu步驟是apt-get install -y mongodb，但我安裝失敗，改成apt-get install -y mongo竟意外成功了，但是版本似乎是3.2.11版，但先能用再說<BR>
+          (7)指令：啟動服務：sudo service mongodb start<BR>
+          (8)指令：停止服務：sudo service mongodb stop<BR>
+          (9)指令：服務狀態：sudo service mongo status<BR> 
+             PS.官方文件是sudo service mongoddb start，但是這裡必須用mongo<BR>
+          (10)測試：執行mongo，接著執行db，如果有看到test，就成功了<BR>
+          ...<BR>
+          QA：到底ChromOS是基於哪種安裝？因為官方文件只有針對主流Linux提供安裝程序，所以裝起來版本不太一樣<BR>
+        </div>
+      </div>
     </div>
 
  
