@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+          aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="dropdownId">
+              <a class="dropdown-item" href="#">Action 1</a>
+              <a class="dropdown-item" href="#">Action 2</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="jumbotron">
+        <h1 class="display-3">Jumbo heading</h1>
+        <p class="lead">Jumbo helper text</p>
+        <hr class="my-2">
+        <p>More info</p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
+        </p>
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          mongoDB install<BR>
+          (1)以下是針對ubutun 18.x進行安裝<BR>
+          (2)主要安裝程序是參考https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/<BR>
+          (3)指令：apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927<BR>
+          (4)指令：echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.2.list<BR>
+          (5)指令：apt-get update<BR>
+          (6)指令：apt-get install -y mongodb<BR>
+             PS.官方文件ubuntu步驟是apt-get install -y mongodb，但我安裝失敗，改成apt-get install -y mongo竟意外成功了，但是版本似乎是3.2.11版，但先能用再說<BR>
+          (7)指令：啟動服務：sudo service mongodb start<BR>
+          (8)指令：停止服務：sudo service mongodb stop<BR>
+          (9)指令：服務狀態：sudo service mongo status<BR> 
+             PS.官方文件是sudo service mongoddb start，但是這裡必須用mongo<BR>
+          (10)測試：執行mongo，接著執行db，如果有看到test，就成功了<BR>
+        </div>
+        <div class="col-md-4">
+          mongoDB connection ip<BR>
+        </div>
+        <div class="col-md-4">
+          mongoDB replication set<BR>
+        </div>
+      </div>
+      <div id="accordianId" role="tablist" aria-multiselectable="true">
+        <div class="card">
+          <div class="card-header" role="tab" id="section1HeaderId">
+            <h5 class="mb-0">
+              <a data-toggle="collapse" data-parent="#accordianId" href="#section1ContentId" aria-expanded="true" aria-controls="section1ContentId">
+                Section 1
+              </a>
+            </h5>
+          </div>
+          <div id="section1ContentId" class="collapse in" role="tabpanel" aria-labelledby="section1HeaderId">
+            <div class="card-body">
+              Section 1 content
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header" role="tab" id="section2HeaderId">
+            <h5 class="mb-0">
+              <a data-toggle="collapse" data-parent="#accordianId" href="#section2ContentId" aria-expanded="true" aria-controls="section2ContentId">
+                Section 2
+              </a>
+            </h5>
+          </div>
+          <div id="section2ContentId" class="collapse in" role="tabpanel" aria-labelledby="section2HeaderId">
+            <div class="card-body">
+              Section 2 content
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      
+    <footer class="text-center">
+      VIK test
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
