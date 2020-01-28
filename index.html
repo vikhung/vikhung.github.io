@@ -96,6 +96,7 @@
         <div class="col-3 py-3 border bg-light">
           一、Chrome OS Linux安裝OpenJDK<BR>
           二、Chroms OS Linux安裝mongoDB<BR>
+          三、Ubutun 安裝mongoDB<BR>
         </div>
         <div class="col py-3 border bg-light">
           一、OpenJDK<BR>
@@ -117,6 +118,133 @@
           (10)測試：執行mongo，接著執行db，如果有看到test，就成功了<BR>
           ...<BR>
           QA：到底ChromOS是基於哪種安裝？因為官方文件只有針對主流Linux提供安裝程序，所以裝起來版本不太一樣<BR>
+          後來檢查版本看來是3.12版的<BR>
+          三、mongoDB(Ubutun)<BR>
+          (1)完全依照官方文件即可，一模一樣<BR>
+        </div>
+      </div>
+      <div class="row" >
+        <div class="col py-3 border bg-light">
+          20200124
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 py-3 border bg-light">
+          mongoDB(Ubutun) study<BR>
+          Install<BR>
+        </div>
+        <div class="col py-3 border bg-light">
+          1.Directories<BR>
+          安裝完後兩個重要位置，/var/lib/mongodb、/var/log/mongodb，前者放置資料，後者放置log，如果有新增使用者帳號，也要調整這兩個目錄權限。<BR>
+          By default, MongoDB runs using the mongodb user account. If you change the user that runs the MongoDB process, you must also modify the permission to the data and log directories to give this user access to these directories.<BR>
+          2.Configuration File<BR>
+          The official MongoDB package includes a configuration file (/etc/mongod.conf). These settings (such as the data directory and log directory specifications) take effect upon startup. That is, if you change the configuration file while the MongoDB instance is running, you must restart the instance for the changes to take effect.<BR>
+          3.Procedure<BR>
+          sudo service mongod start<BR>
+          sudo service mongod status<BR>
+          sudo service mongod stop<BR>
+          sudo service mongod restart<BR>
+          mongo<BR>
+        </div>
+      </div>
+      <div class="row" >
+        <div class="col py-3 border bg-light">
+          20200127
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 py-3 border bg-light">
+          mongoDB(Ubutun) study<BR>
+          連線方式<BR>
+        </div>
+        <div class="col py-3 border bg-light">
+          這幾天稍微玩了一下mongodb，本機操作都沒問題，不過只要遠端就會失敗，找了一下資料，發現應該是要將實際IP寫入設定檔中。<BR>
+          (一)參考文件：https://docs.mongodb.com/manual/reference/configuration-options/#net.bindIp<BR>
+          (二)設定檔位置(記得先備份)<BR>
+          先確認本機IP ==>ifconfig<BR>
+          1.Windows：(mongo安裝位置)\Server\4.0\bin\mongod.cfg<BR>
+          2.ubutun：/etc/mongod.conf<BR>
+          (三)修改設定檔<BR>
+          1.sudo gedit /etc/mongod.conf<BR>
+          2.修改:bindIp:127.0.0.1 ==> bindIp:127.0.0.1,192.168.0.34<BR>
+          3.存檔離開<BR>
+          4.啟動mongodb<BR>
+          5.sudo service mongod start<BR>
+          (四)確認使否有效<BR>
+          可透過log看是否有listen指定的IP，log檔位置<BR>
+          (1)Windows：(mongo安裝位置)\Server\4.0\log\mongod.log<BR>
+          (2)ubutun：/var/log/mongodb/mongod.log<BR>
+          (四)連實際線測試<BR>
+          開始Windows版的Mongodb Compass連線測試工具，確認已可連接。<BR>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 py-3 border bg-light">
+          mongoDB(Ubutun) study<BR>
+          Replication<BR>
+        </div>
+        <div class="col py-3 border bg-light">
+          參考資料：https://docs.mongodb.com/manual/replication/<BR>
+          Replication模式中，如果Second Host沒有接收到Primary Host heartbeat，預設時間為10秒，會重新投票(Elect)選擇新主機作為Primary Host<BR>
+          一.Replica Set Members<BR>
+            https://docs.mongodb.com/manual/core/replica-set-members/<BR>
+            (二)Replica Set Secondary Members(三種應用方式)<BR>
+              https://docs.mongodb.com/manual/core/replica-set-secondary/<BR>
+              設定為priority 0的Secondary Host不能參與投票，也就是不能變為Primary，有三種應用方式(官方介紹)。<BR>
+              1.Priority 0 Replica Set Members：應用於異地備援(Sandby)，https://docs.mongodb.com/manual/core/replica-set-priority-0-member/<BR>
+              2.Hidden Replica Set Members：：應用於提供特定讀取用途，https://docs.mongodb.com/manual/core/replica-set-hidden-member/<BR>
+              3.Delayed Replica Set Members：應用於固定備存晚於當前時間的應用，如故意延後備存保持60分鐘，假設現在是21:00，那該主機只保留20:00前的資料，這樣可用於保護這一小時間的人為錯誤操作。https://docs.mongodb.com/manual/core/replica-set-delayed-member/<BR>
+            (三)Replica Set Arbiter<BR>
+              https://docs.mongodb.com/manual/core/replica-set-arbiter/<BR>
+              不要讓Primary or Secondary Host同時兼任仲裁者<BR>
+              Arbiter不會留存資料<BR>
+          二.Replica Set Deployment Architectures<BR>
+            https://docs.mongodb.com/manual/core/replica-set-architectures/<BR>
+            Deploy an Odd Number of Members<BR>
+            A replica set can have up to 7 voting members.<BR>
+            <B>In general, avoid deploying more than one arbiter per replica set.</B><BR>
+            (一)Three Member Replica Sets<BR>
+            https://docs.mongodb.com/manual/core/replica-set-architecture-three-members/<BR>
+            The minimum number of replica set members needed to obtain the benefits of a replica set is three members(最少要三個)<BR>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 py-3 border bg-light">
+          mongoDB(Ubutun) study<BR>
+          Replication Testing<BR>
+        </div>
+        <div class="col py-3 border bg-light">
+          一、準備三台環境,並各自驗證成功<BR>
+            1.準備相關設定:用同一台Linux主機，用三個Port模擬RS三台，並準備相關的設定檔,資料庫檔,log檔<BR>
+              192.168.0.34 27111 ==> config:/etc/mongod-rs1-p1.conf, db:/var/lib/mongodb-rs1-p1, log:/var/log/mongodb<BR>
+              192.168.0.34 27112 ==> config:/etc/mongod-rs1-s1.conf, db:/var/lib/mongodb-rs1-s1, log:/var/log/mongodb<BR>
+              192.168.0.34 27113 ==> config:/etc/mongod-rs1-s2.conf, db:/var/lib/mongodb-rs1-s2, log:/var/log/mongodb<BR>
+            2.修改設定檔(先備份)<BR>
+              將上述三個設定檔,分別調整相關環境參數<BR>
+              (1)storage.dbPath: /var/lib/mongodb-rs1-p1<BR>
+              (2)net.port: 27111<BR>
+              (3)net.bindIp: 將實體ip加入,方便等會跨主機發動Insert(如果沒有跨主機,是不用加)<BR>
+            3.主機驗證<BR>
+              (1)啟動服務(&:加入背景): sudo mongod --config /etc/mongod-rs1-p1.conf &<BR>
+              (2)確認是否真的登入該主機: sudo tail -f /var/log/mongodb<BR>
+              (3)新增一筆<BR>
+              sudo mongod --host 192.168.0.34 --port 27111<BR>
+              db.collection.insert({"x":1})<BR>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 py-3 border bg-light">
+          Linux 常用指令<BR>
+        </div>
+        <div class="col py-3 border bg-light">
+          1.放入背景 + &<BR>
+            Ex: sudo mongod /etc/mongod-rs1-p1.conf &<BR>
+          2.jobs : 觀察有哪些背景服務<BR>
+          3.fg %5 : 將第5個背景服務放到前景<BR>
+          4.Ctrl+Z : 暫停進入背景<BR>
+          5.bg %5 : 重新執行背景服務<BR>
+          6.kill %5 : 刪除背景服務(PS ubutun試驗無效)<BR>
+          7.nohup : 強制背景服務<BR>
         </div>
       </div>
     </div>
