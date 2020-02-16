@@ -318,11 +318,10 @@
         <div class="col py-3 border bg-light">
           一、參考位置：https://mongodb.github.io/mongo-java-driver/3.12/driver/getting-started/installation/<BR>
           二、jdbc下載位置：https://oss.sonatype.org/content/repositories/releases/org/mongodb/mongodb-driver-sync/3.12.1<BR>
-            1.mongodb-driver-core-3.12.1.jar
-            2.mongodb-driver-sync-3.12.1.jar
-            3.bson-3.12.1.jar
-          三、logging是採用slf4j機制
-
+            1.mongodb-driver-core-3.12.1.jar<BR>
+            2.mongodb-driver-sync-3.12.1.jar<BR>
+            3.bson-3.12.1.jar<BR>
+          三、logging是採用slf4j機制<BR>
         </div>
       </div>
       <div class="row">
@@ -330,29 +329,26 @@
           Java Maven Study<BR>
         </div>
         <div class="col py-3 border bg-light">
-          透過Maven下載管理java套件
-          一、開始方式
-            (一)Eclipse(新專案)
-              (以下僅限開放式開發環境)
-              1.開啟新專案就引入maven，可參考：https://matthung0807.blogspot.com/2018/03/maven.html
-              2.依上述步驟新增專案後，測試一下
-                (1)以mongoDB為例，加入mongodb jdbc，可參考https://mongodb.github.io/mongo-java-driver/3.12/driver/getting-started/installation/
-                (2)打開pom.xml，於dependencies中加入
-                <dependencies>
-                  <dependency>
-                      <groupId>org.mongodb</groupId>
-                      <artifactId>mongodb-driver-sync</artifactId>
-                      <version>3.12.1</version>
-                  </dependency>
-                </dependencies>
-                (3)很神奇的，專案自動將1.mongodb-driver-core-3.12.1.jar、2.mongodb-driver-sync-3.12.1.jar、3.bson-3.12.1.jar都下載完成了
-            (二)EclipseOld新專案)
-              於Eclipse/Propect Preference點選Configure/Convert to MAVEN
-              參考：https://www.itread01.com/content/1544752507.html
-              ...有點麻煩,先放棄[TODO]，有需要的話下次再研究
-
-
-              https://www.ithome.com.tw/voice/117126
+          透過Maven下載管理java套件<BR>
+          一、開始方式<BR>
+            (一)Eclipse(新專案)<BR>
+              (以下僅限開放式開發環境)<BR>
+              1.開啟新專案就引入maven，可參考：https://matthung0807.blogspot.com/2018/03/maven.html<BR>
+              2.依上述步驟新增專案後，測試一下<BR>
+                (1)以mongoDB為例，加入mongodb jdbc，可參考https://mongodb.github.io/mongo-java-driver/3.12/driver/getting-started/installation/<BR>
+                (2)打開pom.xml，於dependencies中加入<BR>
+                <dependencies><BR>
+                  <dependency><BR>
+                      <groupId>org.mongodb</groupId><BR>
+                      <artifactId>mongodb-driver-sync</artifactId><BR>
+                      <version>3.12.1</version><BR>
+                  </dependency><BR>
+                </dependencies><BR>
+                (3)很神奇的，專案自動將1.mongodb-driver-core-3.12.1.jar、2.mongodb-driver-sync-3.12.1.jar、3.bson-3.12.1.jar都下載完成了<BR>
+            (二)EclipseOld新專案)<BR>
+              於Eclipse/Propect Preference點選Configure/Convert to MAVEN<BR>
+              參考：https://www.itread01.com/content/1544752507.html<BR>
+              ...有點麻煩,先放棄[TODO]，有需要的話下次再研究<BR>
         </div>
       </div>
       <div class="row">
@@ -361,27 +357,70 @@
         </div>
         <div class="col py-3 border bg-light">
           1.參考
-            https://www.ithome.com.tw/voice/117126
-            https://www.liaoxuefeng.com/wiki/1252599548343744/1264739155914176
-          2.log4j作者是Ceki Gülcü
-            過往日誌機制有log4j、JUL(java.util.logging)等，後來Apache出了一組Apache Commons Logging當作入口介面，讓AP可以透過Apache Commons Logging切換log4j or 過往日誌機制有log4j、JUL
-            但是Apache Commons Logging的動態綁定規則太複雜，因此log4j作者有出了一套SLF4j的套件，目的和Apache Commons Logging。都是提供入口介面
-          2.SLF4J作者也是Ceki Gülc
-            SLF4j是一組介面，可充作log4j及JUL的介面
-          3.Logback作者也是Ceki Gülc，是一套實作SLF4J介面的座實作
-          4.log4j後來看到SLF的發展，也在2014年提出log4j2，將介面與實作分離分為log4j-api、log4j-core，舊log4j 2015年也不再出版了
-          5.設定檔關係
-            JUL：僅支援.properties
-            Log4j、Logback、Log4j2 Core：可使用.properties、XML、Groovy（Logback）
-            Log4j2：JSON，不支援.properties
-          6.log模板
-            (1)舊方法
-               logger.info("Insert " + list.size() + " record into OpenData DB spend time : " + (t2-t1) + "ms");
-            (2)新方法
-               logger.info("Insert {} record into {} DB spend time : {} ms",
-                           getProperties(PROP_MONGO_DB),
-                           list.size(),
-                           t2-t1);
+            https://www.ithome.com.tw/voice/117126<BR>
+            https://www.liaoxuefeng.com/wiki/1252599548343744/1264739155914176<BR>
+          2.log4j作者是Ceki Gülcü<BR>
+            過往日誌機制有log4j、JUL(java.util.logging)等，後來Apache出了一組Apache Commons Logging當作入口介面，讓AP可以透過Apache Commons Logging切換log4j or 過往日誌機制有log4j、JUL<BR>
+            但是Apache Commons Logging的動態綁定規則太複雜，因此log4j作者有出了一套SLF4j的套件，目的和Apache Commons Logging。都是提供入口介面<BR>
+          2.SLF4J作者也是Ceki Gülc<BR>
+            SLF4j是一組介面，可充作log4j及JUL的介面<BR>
+          3.Logback作者也是Ceki Gülc，是一套實作SLF4J介面的座實作<BR>
+          4.log4j後來看到SLF的發展，也在2014年提出log4j2，將介面與實作分離分為log4j-api、log4j-core，舊log4j 2015年也不再出版了<BR>
+          5.設定檔關係<BR>
+            JUL：僅支援.properties<BR>
+            Log4j、Logback、Log4j2 Core：可使用.properties、XML、Groovy（Logback）<BR>
+            Log4j2：JSON，不支援.properties<BR>
+          6.log日誌使用方式<BR>
+            (1)SLF4j<BR>
+              import org.slf4j.Logger;<BR>
+              import org.slf4j.LoggerFactory;<BR>
+              private static Logger logger = LoggerFactory.getLogger(GetKOCHA.class);<BR>
+            (2)log4j2<BR>
+              import org.apache.logging.log4j.LogManager;<BR>
+              import org.apache.logging.log4j.Logger;<BR>
+              private static Logger logger = LogManager.getLogger(GetKOCHA.class);<BR>
+              MAVAN配置<BR>
+              <dependency><BR>
+                <groupId>org.apache.logging.log4j</groupId><BR>
+                <artifactId>log4j-slf4j-impl</artifactId><BR>
+                <version>2.11.0</version><BR>
+              </dependency><BR>
+            =====<BR>
+            設定檔完全可以共用<BR>
+            (1)log4j2.xml<BR>
+            <Configuration status="WARN" monitorInterval="600"><BR>
+              <Appenders><BR>
+                <Console name="Console" target="SYSTEM_OUT"><BR>
+                  <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/><BR>
+                </Console><BR>
+              </Appenders><BR>
+              <Loggers><BR>
+                <Root level="debug"><!-- Root is DEBUG Level --><BR>
+                  <AppenderRef ref="Console"/><BR>
+                </Root><BR>
+                <Logger name="org.mongodb" level="info"><!-- MongoDB is INFO Level --><BR>
+                  <AppenderRef ref="Console"/><BR>
+                </Logger><BR>
+              </Loggers><BR>
+            </Configuration><BR>
+            (2)log4j2.properties<BR>
+            name = kocha<BR>
+            rootLogger.level = trace<BR>
+            rootLogger.appenderRef.stdout.ref = STDOUT<BR>
+            appender.console.type = Console<BR>
+            appender.console.name = STDOUT<BR>
+            appender.console.layout.type = PatternLayout<BR>
+            appender.console.layout.pattern = [%d{yyyy/MM/dd HH:mm:ss:SSS}] [%p] [%c{1}:%L] - %m%n<BR>
+            appender.console.filter.threshold.type = ThresholdFilter<BR>
+            appender.console.filter.threshold.level = info<BR>
+          6.log模板<BR>
+            (1)舊方法<BR>
+               logger.info("Insert " + list.size() + " record into OpenData DB spend time : " + (t2-t1) + "ms");<BR>
+            (2)新方法<BR>
+               logger.info("Insert {} record into {} DB spend time : {} ms",<BR>
+                           getProperties(PROP_MONGO_DB),<BR>
+                           list.size(),<BR>
+                           t2-t1);<BR>
         </div>
       </div>
       <div class="row">
