@@ -349,14 +349,27 @@
               於Eclipse/Propect Preference點選Configure/Convert to MAVEN<BR>
               參考：https://www.itread01.com/content/1544752507.html<BR>
               ...有點麻煩,先放棄[TODO]，有需要的話下次再研究<BR>
+          二、使用方式<BR>
+            1.可以到maven Repository看最新版本<BR>
+              https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl/2.13.0<BR>
+            2.可以在Pom.xml中維護所需版本，eclipse會自動下載相關的jar檔<BR>
+            3.Ex<BR>
+              <dependency><BR>
+               <groupId>org.apache.logging.log4j</groupId><BR>
+                <artifactId>log4j-slf4j-impl</artifactId><BR>
+                <version>2.13.0</version><BR>
+              </dependency><BR>
+              可以自行更改版本號，eclipse會自動去下載<BR>
+              PS.Console應該要自己執行maven相關程式吧<BR>
         </div>
       </div>
       <div class="row">
         <div class="col-3 py-3 border bg-light">
           SLF4j(Simple Logging Facade for Java)簡介<BR>
+          20200216 Vik(end)<BR>
         </div>
         <div class="col py-3 border bg-light">
-          1.參考
+          1.參考<BR>
             https://www.ithome.com.tw/voice/117126<BR>
             https://www.liaoxuefeng.com/wiki/1252599548343744/1264739155914176<BR>
           2.log4j作者是Ceki Gülcü<BR>
@@ -375,19 +388,32 @@
               import org.slf4j.Logger;<BR>
               import org.slf4j.LoggerFactory;<BR>
               private static Logger logger = LoggerFactory.getLogger(GetKOCHA.class);<BR>
-            (2)log4j2<BR>
-              import org.apache.logging.log4j.LogManager;<BR>
-              import org.apache.logging.log4j.Logger;<BR>
-              private static Logger logger = LogManager.getLogger(GetKOCHA.class);<BR>
-              MAVAN配置<BR>
+              Maven配置<BR>
+              =========<BR>
               <dependency><BR>
                 <groupId>org.apache.logging.log4j</groupId><BR>
                 <artifactId>log4j-slf4j-impl</artifactId><BR>
                 <version>2.11.0</version><BR>
               </dependency><BR>
-            =====<BR>
-            設定檔完全可以共用<BR>
+            (2)log4j2<BR>
+              import org.apache.logging.log4j.LogManager;<BR>
+              import org.apache.logging.log4j.Logger;<BR>
+              private static Logger logger = LogManager.getLogger(GetKOCHA.class);<BR>
+              Maven配置<BR>
+              <dependency><BR>
+                <groupId>org.apache.logging.log4j</groupId><BR>
+              <artifactId>log4j-api</artifactId><BR>
+              <version>2.13.0</version><BR>
+              </dependency><BR>
+              <dependency><BR>
+                <groupId>org.apache.logging.log4j</groupId><BR>
+                <artifactId>log4j-core</artifactId><BR>
+                <version>2.13.0</version><BR>
+              </dependency><BR>
+              PS.因為mongodb是使用slf4j,因此如果用這機制,mongodb的log沒辦法控制...<BR>
+          7.設定檔完全可以共用上述兩種(SLF4J、log4j2)配置<BR>
             (1)log4j2.xml<BR>
+            <code>
             <Configuration status="WARN" monitorInterval="600"><BR>
               <Appenders><BR>
                 <Console name="Console" target="SYSTEM_OUT"><BR>
@@ -403,16 +429,17 @@
                 </Logger><BR>
               </Loggers><BR>
             </Configuration><BR>
+            </code>
             (2)log4j2.properties<BR>
-            name = kocha<BR>
-            rootLogger.level = trace<BR>
-            rootLogger.appenderRef.stdout.ref = STDOUT<BR>
-            appender.console.type = Console<BR>
-            appender.console.name = STDOUT<BR>
-            appender.console.layout.type = PatternLayout<BR>
-            appender.console.layout.pattern = [%d{yyyy/MM/dd HH:mm:ss:SSS}] [%p] [%c{1}:%L] - %m%n<BR>
-            appender.console.filter.threshold.type = ThresholdFilter<BR>
-            appender.console.filter.threshold.level = info<BR>
+              name = kocha<BR>
+              rootLogger.level = trace<BR>
+              rootLogger.appenderRef.stdout.ref = STDOUT<BR>
+              appender.console.type = Console<BR>
+              appender.console.name = STDOUT<BR>
+              appender.console.layout.type = PatternLayout<BR>
+              appender.console.layout.pattern = [%d{yyyy/MM/dd HH:mm:ss:SSS}] [%p] [%c{1}:%L] - %m%n<BR>
+              appender.console.filter.threshold.type = ThresholdFilter<BR>
+              appender.console.filter.threshold.level = info<BR>
           6.log模板<BR>
             (1)舊方法<BR>
                logger.info("Insert " + list.size() + " record into OpenData DB spend time : " + (t2-t1) + "ms");<BR>
