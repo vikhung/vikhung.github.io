@@ -313,6 +313,24 @@
       </div>
       <div class="row">
         <div class="col-3 py-3 border bg-light">
+          Mongo 常用語法<BR>
+        </div>
+        <div class="col py-3 border bg-light">
+          1.show dbs ==> List所有Database<BR>
+          2.show collections ==> List所有Collection<BR>
+          3.db ==>列出目前始在哪個DB<BR>
+          4.db.kocha.count() ==> 找出筆數<BR>
+          5.db.kocha.drop() ==> 砍掉Collection<BR>
+          6.db.kocha.find({hospName:"遵龍藥局"})<BR>
+          Like查詢方法<BR>
+          7.db.kocha.find({hospTel:{'$regex': '(04)'}})<BR>
+          8.db.kocha.find({createDate:{'$regex': '20200218095'}})<BR>
+          9.db.kocha.find({"createDate":/2020/})<BR>
+          10.db.kocha.find({"hospTel":/255/})<BR>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 py-3 border bg-light">
           Mongo Java Sample<BR>
         </div>
         <div class="col py-3 border bg-light">
@@ -448,6 +466,29 @@
                            getProperties(PROP_MONGO_DB),<BR>
                            list.size(),<BR>
                            t2-t1);<BR>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 py-3 border bg-light">
+          一、Linux環境連結Github方法<BR>
+          二、Eclipse With Github<BR>
+          20200216 Vik(end)<BR>
+        </div>
+        <div class="col py-3 border bg-light">
+          一、Linux環境連結Github方法<BR>
+          1.參考<BR>
+            https://www.liquidweb.com/kb/create-clone-repo-github-ubuntu-18-04/<BR>
+          2.步驟<BR>
+            git config --global user.name "vikhung"<BR>
+            git config --global user.email "vikhung@gmail.com"<BR>
+            mkdir MyGithubCode<BR>
+            cd MyGithubCode<BR>
+            git clone https://github.com/username/want-some-java.gitv(將github url下載)<BR>
+            輸入帳號密碼，自動下載到對應目錄<BR>
+          二、Eclispe With Github<BR>
+          1.開啟Eclipse<BR>
+          2.Import專案，選用已存在的Eclipse專案<BR>
+          3.如果該專案目錄是從github下載，那Eclipse會自動支援<BR>
         </div>
       </div>
       <div class="row">
