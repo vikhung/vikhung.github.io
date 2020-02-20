@@ -491,6 +491,29 @@
           3.如果該專案目錄是從github下載，那Eclipse會自動支援<BR>
         </div>
       </div>
+      <div class="col-3 py-3 border bg-light">
+        Slack Web Hook<BR>
+        20200220 Vik<BR>
+        其實還有另一種複雜版，請搜尋Slack API<BR>
+      </div>
+      <div class="col py-3 border bg-light">
+          1.申請Slack APP<BR>
+            https://slack.com/signin?redir=/apps<BR>
+          2.輸入Workspace<BR>
+            Ex:fiscnw<BR>
+          3.Create APP https://api.slack.com/apps<BR>
+            Ex:VikSlackApp<BR>
+          4.點遠APP圖示，進入Basic Information<BR>
+          5.新增Web Hook<BR>
+            點選Add features and functionality<BR>
+            點選Incomng Web Hook<BR>
+            新增Web Hook<BR>
+          6.這時候，Slack會給針對#channel給一串URL<BR>
+            https://hooks.slack.com/services/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<BR>
+            另外，只要依據下列格式，即可將訊息拋送給Slack<BR>
+            curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/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<BR>
+      </div>
+    </div>
       <div class="row">
         <div class="col-3 py-3 border bg-light">
           Linux 常用指令或問題<BR>
