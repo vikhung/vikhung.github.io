@@ -491,6 +491,11 @@
           3.如果該專案目錄是從github下載，那Eclipse會自動支援<BR>
         </div>
       </div>
+      <div class="row" >
+        <div class="col py-3 border bg-light">
+          20200220
+        </div>
+      </div>
       <div class="row">
         <div class="col-3 py-3 border bg-light">
           Slack Web Hook<BR>
@@ -513,6 +518,88 @@
             https://hooks.slack.com/services/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<BR>
             另外，只要依據下列格式，即可將訊息拋送給Slack<BR>
             curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/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<BR>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-3 py-3 border bg-light">
+          Spring Boot For Web(kocha)
+        </div>
+        <div class="col py-3 border bg-light">
+          一、步驟
+            1.Open Eclipse
+            2.Create new project "Spring Started Project"
+              Service url : default
+              Name : kochaWeb
+              Location : (Local PC path)
+              Group : com.vik
+              Artiface : kochaWeb(同Name)
+              Package : com.vik
+            3.選擇元件 : Web、NoSQl-MongoDB、Spring boot for apache kafka..
+            4.Finish
+          二、執行方式
+            1.Eclispe中專案執行
+            2.DOS D:\>mvn spring-boot:run
+            3.jar
+              (1)D:\>mvn packege
+              (2)java -jar xxx.jar
+          三、Browser測試
+            http://localhost:8080
+            (會出現錯誤，因為SpringBoot尚未指定Controller)
+          四、新增Controller，並重新測試http://localhost:8080/sayHello
+            package com.vik.kocha;
+            import org.springframework.stereotype.Controller;
+            import org.springframework.web.bind.annotation.GetMapping;
+            import org.springframework.web.bind.annotation.PostMapping;
+            import org.springframework.web.bind.annotation.RequestMapping;
+            import org.springframework.web.bind.annotation.RequestMethod;
+            import org.springframework.web.bind.annotation.RestController;
+            @RestController
+            @RequestMapping("/kocha/v1.0.0")
+            public class KochaController {
+              
+              //@RequestMapping(value = "/sayHello", method = RequestMethod.GET)	
+	            //@RequestMapping("/sayHello")
+              @GetMapping("/sayHello")
+              public String hello()
+              {
+                return "Hello Spring Boot!!";
+              }
+
+              @GetMapping("/dbCount")
+              public String count()
+              {
+                return "20";
+              }
+            }
+          五、HTML模板
+            如果要顯示頁面的話，要建立一個可以對應的模板
+            1.@@RestController 改為 @Controller
+            2.POM.xml 新增
+            <dependency>
+              <groupId>org.springframework.boot</groupId>
+              <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            </dependency>
+            3.於resources/emplates中新增一個html頁面模板
+              kochas.html
+            4.new method
+            @GetMapping("/kochas")
+            public Object getAll()
+            {
+              return "kochas";  //這裡必須和html檔名相同
+            }
+          PS.參考資料
+          1.https://www.ruanyifeng.com/blog/2011/09/restful.html (理解RESTful架构/阮一峰)
+          2.http://www.ruanyifeng.com/blog/2014/05/restful_api.html (RESTful API 设计指南/阮一峰)
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-3 py-3 border bg-light">
+          Sample
+        </div>
+        <div class="col py-3 border bg-light">
+          Sample Detail
         </div>
       </div>
 
