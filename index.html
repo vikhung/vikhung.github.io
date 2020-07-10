@@ -618,6 +618,22 @@
           7.nohup : 強制背景服務<BR>
           8.如果要讓Windows可以遠端登入ubutun，需要先安裝opsnssl-server
             http://blog.udn.com/nigerchen/2262865
+          9.如果apt-get要透過SSL下載軟體，那得先安裝apt-transport-htts
+          10.開啟Syslog
+            (1)檢查/etc/rsyslog.conf是否開啟相關Port
+               udp/tcp 打開
+            (2)檢查 : sudo service rsyslog status
+            (3)啟動 : sudo service syslog start
+          11.cron
+            (1)啟動 : sudo service cron start
+            (2)新增 job
+               crontab -e
+               EX:
+               */1 * * * * /bin/sh /home/vik/VikGitHub/VikCode/linux/a01-1.sh >> myLog.txt
+               重點:
+               /1 1分鐘
+               /bin/sh 用這個命令來執行shell
+               
         </div>
       </div>
     </div>
