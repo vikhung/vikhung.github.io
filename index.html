@@ -629,24 +629,23 @@
           5.bg %5 : 重新執行背景服務<BR>
           6.kill %5 : 刪除背景服務(PS ubutun試驗無效)<BR>
           7.nohup : 強制背景服務<BR>
-          8.如果要讓Windows可以遠端登入ubutun，需要先安裝opsnssl-server
-            http://blog.udn.com/nigerchen/2262865
-          9.如果apt-get要透過SSL下載軟體，那得先安裝apt-transport-htts
-          10.開啟Syslog
-            (1)檢查/etc/rsyslog.conf是否開啟相關Port
-               udp/tcp 打開
-            (2)檢查 : sudo service rsyslog status
-            (3)啟動 : sudo service syslog start
-          11.cron
-            (1)啟動 : sudo service cron start
-            (2)新增 job
-               crontab -e
-               EX:
-               */1 * * * * /bin/sh /home/vik/VikGitHub/VikCode/linux/a01-1.sh >> myLog.txt
-               重點:
-               /1 1分鐘
-               /bin/sh 用這個命令來執行shell
-               
+          8.如果要讓Windows可以遠端登入ubutun，需要先安裝opsnssl-server<BR>
+            http://blog.udn.com/nigerchen/2262865<BR>
+          9.如果apt-get要透過SSL下載軟體，那得先安裝apt-transport-htts<BR>
+          10.開啟Syslog<BR>
+            (1)檢查/etc/rsyslog.conf是否開啟相關Port<BR>
+               udp/tcp 打開<BR>
+            (2)檢查 : sudo service rsyslog status<BR>
+            (3)啟動 : sudo service rsyslog start<BR>
+          11.cron<BR>
+            (1)啟動 : sudo service cron start<BR>
+            (2)新增 job<BR>
+               crontab -e<BR>
+               EX:<BR>
+               */1 * * * * /bin/sh /home/vik/VikGitHub/VikCode/linux/a01-1.sh >> myLog.txt<BR>
+               重點:<BR>
+               /1 1分鐘<BR>
+               /bin/sh 用這個命令來執行shell<BR>
         </div>
       </div>
       <div class="row">
@@ -656,9 +655,23 @@
         <div class="col py-3 border bg-light">
           1.java : sudo apt install default-jdk
           2.jq
-          3.
-          4.
-               
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 py-3 border bg-light">
+          Minikube安裝sudo apt-get install -y kubectl程序<BR>
+        </div>
+        <div class="col py-3 border bg-light">
+          https://blog.toright.com/posts/6513/kubernetes-%E5%9F%BA%E7%A4%8E%E5%85%83%E4%BB%B6%E4%BB%8B%E7%B4%B9%E8%88%87minikube%E5%AE%89%E8%A3%9D.html
+          1.安裝kubectl工具
+          (1)sudo apt-get install -y kubectl
+          2.安裝minikube
+          (1)curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+          (2)chmod +x minikube
+          (3)sudo cp minikube /usr/local/bin/
+          (4)rm minikube
+          3.啟動minikube
+          minikube start --driver=docker
         </div>
       </div>
     </div>
