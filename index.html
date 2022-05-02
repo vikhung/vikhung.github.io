@@ -653,8 +653,8 @@
           Linux 安裝AP SOP<BR>
         </div>
         <div class="col py-3 border bg-light">
-          1.java : sudo apt install openjdk-11-jdk
-          2.jq
+          1.java : sudo apt install openjdk-11-jdk<BR>
+          2.jq<BR>
         </div>
       </div>
       <div class="row">
@@ -662,16 +662,78 @@
           Minikube安裝sudo apt-get install -y kubectl程序<BR>
         </div>
         <div class="col py-3 border bg-light">
-          https://blog.toright.com/posts/6513/kubernetes-%E5%9F%BA%E7%A4%8E%E5%85%83%E4%BB%B6%E4%BB%8B%E7%B4%B9%E8%88%87minikube%E5%AE%89%E8%A3%9D.html
-          1.安裝kubectl工具
-          (1)sudo apt-get install -y kubectl
-          2.安裝minikube
-          (1)curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-          (2)chmod +x minikube
-          (3)sudo cp minikube /usr/local/bin/
-          (4)rm minikube
-          3.啟動minikube
-          minikube start --driver=docker
+          1.安裝kubectl工具<BR>
+            (1)sudo apt-get install -y kubectl<BR>
+          2.安裝minikube<BR>
+            (1)curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64<BR>
+            (2)chmod +x minikube<BR>
+            (3)sudo cp minikube /usr/local/bin/<BR>
+            (4)rm minikube<BR>
+          3.啟動minikube<BR>
+          minikube start --driver=docker<BR>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 py-3 border bg-light">
+          elasticsearch logstash kibana 8.1 install<BR>
+        </div>
+        <div class="col py-3 border bg-light">
+          <U>install elasticsearch(for ubuntu)</U><BR>
+          https://www.elastic.co/guide/en/elasticsearch/reference/8.1/deb.html#deb-repo<BR>
+          以下動作均在Acer NB實驗過<BR>
+          1$wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg<BR>
+          2$sudo apt-get install apt-transport-https<BR>
+          3$echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-8.x.list<BR>
+          4$sudo apt-get update && sudo apt-get install elasticsearch<BR>
+          裝完後會產生elastic這個預設帳號的密碼要存起來<BR>
+          5$sudo systemctl enable elasticsearch.service    啟動為服務狀態<BR>
+          6$sudo systemctl start elasticsearch.service    啟動服務<BR>
+          7$sudo curl --cacert /etc/elasticsearch/certs/http_ca.crt -u elastic https://localhost:9200  檢查服務<BR> 
+            如果用一般使用者sudo安裝，會看不到certs目錄，故加上sudo<BR>
+          <div>&nbsp</div>
+          <U>remove elasticsearch</U><BR>
+          有發生，如果本來安裝ES7.1x，後來移除ES7改安裝ES8，但ES8無法啟動，查錯誤訊息是ES7無法join進ES8，因此看是要upgradeES7資料，不然就移ES7乾淨<BR>
+          1$cat /etc/os-release 檢查版本<BR>
+          2$curl http://localhost:9200/_cluster/health?pretty 確認ES是否執行<BR>
+          3$jps | grep elasticsearch 確認是否有ES的jvm<BR>
+          4$ps -ef | grep elastic<BR>
+          5$sudo apt remove elasticsearch   移除ES<BR>
+          6$sudo apt --purge autoremove elasticsearch 移除設定檔<BR>
+          7$sudo rm -rf /etc/elasticsearch  移除安裝資料<BR>
+          8$sudo rm -rf /var/lib/elasticsearch/ 移除安裝資料<BR>
+          <div>&nbsp</div>
+          <U>install kibana</U><BR>
+          https://www.elastic.co/guide/en/kibana/8.1/deb.html#deb-repo
+          1$wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo gpg --dearmor -o /usr/share/keyrings/elasticsearch-keyring.gpg<BR>
+          2$sudo apt-get install apt-transport-https<BR>
+          3$echo "deb [signed-by=/usr/share/keyrings/elasticsearch-keyring.gpg] https://artifacts.elastic.co/packages/8.x/apt stable main" | sudo tee /etc/apt/sources.list.d/elastic-8.x.list<BR>
+          4$sudo apt-get update && sudo apt-get install kibana<BR>
+          5$/usr/share/elasticsearch/bin/elasticsearch-create-enrollment-token -s kibana ==> 產出kibana token<BR>
+          6$sudo /bin/systemctl enable kibana.service<BR>
+          7$sudo systemctl start kibana.service<BR>
+          8$啟動http://localhost:5601，並輸入上述步驟#5的token<BR>
+          9$執行/usr/share/kibana/bin/kibana-verification-code ==> 產生六碼AuthCodeC<BR>
+          10$回到網站輸入六碼AuthCode，結束<BR>
+          11使用elastic/password登入<BR>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 py-3 border bg-light">
+          elasticsearch<BR>token base api-key authentication
+        </div>
+        <div class="col py-3 border bg-light">
+          
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3 py-3 border bg-light">
+          Docker sample(For WSL2)<BR>
+        </div>
+        <div class="col py-3 border bg-light">
+          微軟預設安裝會失敗，要用以下方式安裝<BR>
+          $ curl -fsSL https://get.docker.com -o get-docker.sh<BR>
+          $ sudo sh get-docker.sh<BR>
+          $ sudo service docker start<BR>
         </div>
       </div>
     </div>
