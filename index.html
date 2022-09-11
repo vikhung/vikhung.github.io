@@ -760,6 +760,38 @@
           npm -v 檢查版本<BR>
           npm install -g npm<BR>
         </div>
+      </div><div class="row">
+        <div class="col-3 py-3 border bg-light">
+          Angulat<BR>
+        </div>
+        <div class="col py-3 border bg-light">
+          1.安裝Angular必要工具<BR>
+            (1)install nodejs<BR>
+            (2)npm install -g typescript<BR>
+            (3)npm install -g typings<BR>
+            (4)npm install -g @angular/cli (安裝angular CLI工具)<BR>
+               ng v or ng version(檢查是否有安裝成功)<BR>
+            (5)VS Code安裝Angular Extension Pack(保哥的套件)<BR>
+            (6)Chrom線上應用程式商店安裝Angular DevTools<BR>
+          2.Create new project<BR>
+            (1)ng new HelloAngular (使用ng指令創建Angular專案)<BR>
+            (2)cd HelloAngular<BR>
+            (3)ng serve (執行完成後，輸入http://localhost:4200)<BR>
+               or ng serve --open (自動開啟Browser)<BR>
+            (4)完成<BR>
+          3.開始使用
+            (1)參數檔：.\HelloAngular\src\app\app.component.ts
+               可以調整title參數，angular後續會使用{{}}來動態繫結此參數
+            (2)首頁：.\HelloAngular\src\app\app.component.html
+          4.Angular有四種綁定機制(MyMessageBoard中有範例)
+            (1) {{ value }}
+            (2) [property] = "value"
+            (3) (event) = "handler"
+            (4) [(ngModel)] = "property"
+          5.Angular CLI說明
+            https://ithelp.ithome.com.tw/articles/10205484
+            
+        </div>
       </div>
       <div class="row">
         <div class="col-3 py-3 border bg-light">
