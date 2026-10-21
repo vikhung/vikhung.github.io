@@ -1,0 +1,243 @@
+[
+  {
+    "id": "2026-10-20",
+    "title": "新家落成：我的數位筆記本改版了",
+    "date": "2026-10-20",
+    "category": "新知",
+    "tags": [
+      "blog",
+      "markdown",
+      "公告"
+    ],
+    "summary": "網站改成「一天一個資料夾、一篇 Markdown」的格式，舊的技術筆記也全部搬過來了。",
+    "cover": "cover.svg"
+  },
+  {
+    "id": "2026-10-18",
+    "title": "皇帝殿一日遊",
+    "date": "2026-10-18",
+    "category": "技術",
+    "tags": [],
+    "summary": "一句話摘要（會顯示在列表）",
+    "cover": ""
+  },
+  {
+    "id": "2022-09-11",
+    "title": "Node.js 基本指令與 Angular 起手式",
+    "date": "2022-09-11",
+    "category": "技術",
+    "tags": [
+      "nodejs",
+      "npm",
+      "angular"
+    ],
+    "summary": "npm 初始化、套件管理，以及從零建立第一個 Angular 專案與四種資料綁定。",
+    "cover": ""
+  },
+  {
+    "id": "2022-09-10",
+    "title": "Google Authenticator 測試",
+    "date": "2022-09-10",
+    "category": "技術",
+    "tags": [
+      "authenticator",
+      "2fa"
+    ],
+    "summary": "Google Authenticator（TOTP）實作測試，詳細筆記放在 Notion。",
+    "cover": ""
+  },
+  {
+    "id": "2022-05-02",
+    "title": "Elasticsearch / Kibana 8.1 安裝與 Docker (WSL2)",
+    "date": "2022-05-02",
+    "category": "技術",
+    "tags": [
+      "elasticsearch",
+      "kibana",
+      "docker",
+      "wsl2",
+      "ubuntu"
+    ],
+    "summary": "在 Ubuntu 安裝 ES 8.1 與 Kibana 的完整步驟、移除舊版 ES 的方法，以及 WSL2 安裝 Docker 的做法。",
+    "cover": ""
+  },
+  {
+    "id": "2021-04-25",
+    "title": "Minikube 安裝程序",
+    "date": "2021-04-25",
+    "category": "技術",
+    "tags": [
+      "kubernetes",
+      "minikube",
+      "docker"
+    ],
+    "summary": "在 Ubuntu 上安裝 kubectl 與 minikube，並用 docker driver 啟動。",
+    "cover": ""
+  },
+  {
+    "id": "2020-10-18",
+    "title": "Linux 安裝 AP SOP",
+    "date": "2020-10-18",
+    "category": "技術",
+    "tags": [
+      "linux",
+      "java"
+    ],
+    "summary": "新 Linux 主機到手後，先裝這幾樣。",
+    "cover": ""
+  },
+  {
+    "id": "2020-04-05",
+    "title": "Git 常用指令小抄",
+    "date": "2020-04-05",
+    "category": "技術",
+    "tags": [
+      "git",
+      "cheatsheet"
+    ],
+    "summary": "status / add / commit / push 的基本流程與幾個實用參數。",
+    "cover": ""
+  },
+  {
+    "id": "2020-03-29",
+    "title": "Spring Boot 入門：建立專案、Controller 與 Thymeleaf 模板",
+    "date": "2020-03-29",
+    "category": "技術",
+    "tags": [
+      "spring-boot",
+      "java",
+      "rest"
+    ],
+    "summary": "從 Eclipse 建立 Spring Boot 專案，到寫出第一支 REST API，再到用 Thymeleaf 顯示頁面。",
+    "cover": ""
+  },
+  {
+    "id": "2020-02-20",
+    "title": "Slack Web Hook：用 curl 丟訊息到頻道",
+    "date": "2020-02-20",
+    "category": "技術",
+    "tags": [
+      "slack",
+      "webhook",
+      "curl"
+    ],
+    "summary": "申請 Slack App、建立 Incoming Web Hook，一行 curl 就能推播訊息。",
+    "cover": ""
+  },
+  {
+    "id": "2020-02-18",
+    "title": "Mongo 常用語法與 Linux / Eclipse 連 GitHub",
+    "date": "2020-02-18",
+    "category": "技術",
+    "tags": [
+      "mongodb",
+      "git",
+      "eclipse",
+      "linux"
+    ],
+    "summary": "MongoDB shell 常用查詢（含 Like 查詢），以及在 Linux 與 Eclipse 連接 GitHub 的步驟。",
+    "cover": ""
+  },
+  {
+    "id": "2020-02-16",
+    "title": "Java 連 MongoDB：Maven 管理套件與 SLF4J / Log4j2 日誌",
+    "date": "2020-02-16",
+    "category": "技術",
+    "tags": [
+      "java",
+      "maven",
+      "mongodb",
+      "logging"
+    ],
+    "summary": "用 Maven 引入 MongoDB Java Driver，並釐清 SLF4J、Logback、Log4j2 之間的關係與設定。",
+    "cover": ""
+  },
+  {
+    "id": "2020-01-28",
+    "title": "MongoDB Replica Set 實驗：用三個 Port 模擬三台主機",
+    "date": "2020-01-28",
+    "category": "技術",
+    "tags": [
+      "mongodb",
+      "replication",
+      "linux"
+    ],
+    "summary": "在同一台 Linux 上開三個 mongod，建立 Replica Set，並用關機/開機實驗驗證選舉與同步。附 Linux 背景服務常用指令。",
+    "cover": ""
+  },
+  {
+    "id": "2020-01-27",
+    "title": "MongoDB 遠端連線設定與 Replication 觀念",
+    "date": "2020-01-27",
+    "category": "技術",
+    "tags": [
+      "mongodb",
+      "replication"
+    ],
+    "summary": "本機正常、遠端失敗？原來要把實際 IP 寫進 bindIp。另外整理 Replica Set 的成員類型與架構。",
+    "cover": ""
+  },
+  {
+    "id": "2020-01-24",
+    "title": "MongoDB (Ubuntu) 學習：安裝後的目錄與設定",
+    "date": "2020-01-24",
+    "category": "技術",
+    "tags": [
+      "mongodb",
+      "ubuntu"
+    ],
+    "summary": "安裝完成後兩個重要位置、設定檔，以及常用服務指令。",
+    "cover": ""
+  },
+  {
+    "id": "2020-01-23",
+    "title": "Chrome OS Linux 安裝 OpenJDK 與 MongoDB",
+    "date": "2020-01-23",
+    "category": "技術",
+    "tags": [
+      "linux",
+      "java",
+      "mongodb",
+      "chromeos"
+    ],
+    "summary": "在 Chrome OS 的 Linux 容器裡安裝 OpenJDK 8 與 MongoDB（以及 Ubuntu 的作法）。",
+    "cover": ""
+  },
+  {
+    "id": "2020-01-22",
+    "title": "舊筆電新生命：用 CloudReady 安裝 Chrome OS",
+    "date": "2020-01-22",
+    "category": "技術",
+    "tags": [
+      "chromeos",
+      "linux"
+    ],
+    "summary": "家裡有舊 NB 的話，可以用 CloudReady 灌上 Chrome OS，還能順便啟用 Linux。",
+    "cover": ""
+  },
+  {
+    "id": "2020-01-11",
+    "title": "練習 Bootstrap 4",
+    "date": "2020-01-11",
+    "category": "技術",
+    "tags": [
+      "bootstrap",
+      "html"
+    ],
+    "summary": "第一次用 Bootstrap 4 把網頁排版起來的紀錄。",
+    "cover": ""
+  },
+  {
+    "id": "2020-01-08",
+    "title": "建立 GitHub Blog 與版控流程",
+    "date": "2020-01-08",
+    "category": "技術",
+    "tags": [
+      "github",
+      "git",
+      "vscode"
+    ],
+    "summary": "從建立 vikhung.github.io Repository，到 GitHub Desktop 與 Visual Studio Code 的版控操作。",
+    "cover": ""
+  }
+]
