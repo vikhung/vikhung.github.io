@@ -44,37 +44,39 @@
   /* ---------- views ---------- */
   function listView(filter) {
     document.title = "Vik 的數位筆記本";
-    const q = query.trim().toLowerCase();
-    let items = posts.filter((p) => {
-      if (filter?.cat && p.category !== filter.cat) return false;
-      if (filter?.tag && !(p.tags || []).includes(filter.tag)) return false;
-      if (q && !(p.title + p.summary + (p.tags || []).join(" ")).toLowerCase().includes(q)) return false;
-      return true;
-    });
+    const years = [...new Set(posts.map((p) => p.date.slice(0, 4)))].sort().reverse();
+    const thisYear = String(new Date().getFullYear());
+    // 首頁預設只列今年；今年還沒文章就退而列最新有文章的一年
+    const year = filter?.year || (!filter?.cat && !filter?.tag ? (years.includes(thisYear) ? thisYear : years[0]) : "all");
 
     const chips = ["全部", ...CATS].map((c) => {
       const on = (c === "全部" && !filter?.cat) || filter?.cat === c;
       return `<a class="chip ${on ? "on" : ""}" href="#/${c === "全部" ? "" : "c/" + enc(c)}">${c}</a>`;
     }).join("");
+    const sel = new Set((filter?.month || "").split(",").filter(Boolean).map((m) => m.padStart(2, "0")));
+    const monthPath = (set) => (set.size ? "/" + [...set].sort().map(Number).join(",") : "");
+    const yearChips = `<a class="chip ${year === "all" && !filter?.cat && !filter?.tag ? "on" : ""}" href="#/y/all" title="${posts.length} 篇">全部年份</a>` +
+      years.map((y) => {
+        const n = posts.filter((p) => p.date.startsWith(y)).length;
+        return `<a class="chip ${year === y ? "on" : ""}" href="#/y/${y}" title="${n} 篇">${y}</a>`;
+      }).join("");
 
-    let body = "";
-    let lastYear = "";
-    for (const p of items) {
-      const y = p.date.slice(0, 4);
-      if (y !== lastYear) { body += `<div class="year">${y}</div>`; lastYear = y; }
-      const [, m, d] = p.date.split("-");
-      body += `
-        <a class="post-item" href="#/${p.id}">
-          <div class="post-date">${m}月<b>${d}</b></div>
-          <div>
-            <h2 class="post-title">${esc(p.title)}</h2>
-            ${p.summary ? `<p class="post-sum">${esc(p.summary)}</p>` : ""}
-            <div class="meta">${catChip(p.category)}${(p.tags || []).map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div>
-          </div>
-          ${p.cover ? `<img class="thumb" loading="lazy" src="${POSTS_DIR}/${p.id}/${esc(p.cover)}" alt="">` : ""}
-        </a>`;
+    // 第二排：1～12 月，可多選；所選年份中沒有文章的月份會變淡
+    let monthChips = "";
+    if (!filter?.cat && !filter?.tag) {
+      const inYear = posts.filter((p) => year === "all" || p.date.startsWith(year));
+      const base = `#/y/${year}`;
+      monthChips = `<div class="toolbar months"><div class="chips">` +
+        Array.from({ length: 12 }, (_, i) => {
+          const m = String(i + 1).padStart(2, "0");
+          const n = inYear.filter((p) => p.date.slice(5, 7) === m).length;
+          const next = new Set(sel); next.has(m) ? next.delete(m) : next.add(m);
+          const on = sel.has(m);
+          return `<a class="chip ${on ? "on" : ""} ${n || on ? "" : "off"}" href="${base}${monthPath(next)}" title="${n} 篇">${i + 1}月</a>`;
+        }).join("") +
+        (sel.size ? `<a class="chip clear" href="${base}">清除月份</a>` : "") +
+        `</div></div>`;
     }
-    if (!items.length) body = `<div class="empty">$ ls: 找不到符合的文章 ¯\\_(ツ)_/¯</div>`;
 
     const hint = filter?.tag ? `<p class="prompt">標籤 <b>#${esc(filter.tag)}</b> · <a href="#/">清除</a></p>` : "";
     app.innerHTML = `
@@ -86,18 +88,52 @@
       <div class="wrap">
         <div class="toolbar">
           <div class="chips">${chips}</div>
-          <input class="search" id="q" type="search" placeholder="/ 搜尋文章" value="${esc(query)}">
+          <input class="search" id="q" type="search" placeholder="/ 搜尋文章（搜尋所有年份）" value="${esc(query)}">
         </div>
+        <div class="toolbar years"><div class="chips">${yearChips}</div></div>
+        ${monthChips}
         ${hint}
-        ${body}
+        <p class="count" id="count"></p>
+        <div id="list"></div>
       </div>`;
+
+    // 只重繪列表，不重建輸入框，才不會打斷中文輸入法（IME）
+    const renderList = () => {
+      const q = query.trim().toLowerCase();
+      const items = posts.filter((p) => {
+        if (filter?.cat && p.category !== filter.cat) return false;
+        if (filter?.tag && !(p.tags || []).includes(filter.tag)) return false;
+        if (q) return (p.title + p.summary + (p.tags || []).join(" ")).toLowerCase().includes(q);
+        if (year !== "all" && !p.date.startsWith(year)) return false;
+        return !sel.size || sel.has(p.date.slice(5, 7));
+      });
+      let body = "";
+      let lastKey = "";
+      for (const p of items) {
+        const key = p.date.slice(0, 7);
+        if (key !== lastKey) { body += `<div class="year">${key.slice(0, 4)} · ${Number(key.slice(5))} 月</div>`; lastKey = key; }
+        const [, m, d] = p.date.split("-");
+        body += `
+        <a class="post-item" href="#/${p.id}">
+          <div class="post-date">${m}月<b>${d}</b></div>
+          <div>
+            <h2 class="post-title">${esc(p.title)}</h2>
+            ${p.summary ? `<p class="post-sum">${esc(p.summary)}</p>` : ""}
+            <div class="meta">${catChip(p.category)}${(p.tags || []).map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+          </div>
+          ${p.cover ? `<img class="thumb" loading="lazy" src="${POSTS_DIR}/${p.id}/${esc(p.cover)}" alt="">` : ""}
+        </a>`;
+      }
+      $("#count").textContent = items.length ? `共 ${items.length} 篇` : "";
+      $("#list").innerHTML = body || `<div class="empty">$ ls: 找不到符合的文章 ¯\_(ツ)_/¯</div>`;
+    };
+    renderList();
+
     const input = $("#q");
-    input.addEventListener("input", () => {
-      query = input.value;
-      const pos = input.selectionStart;
-      listView(filter);
-      const n = $("#q"); n.focus(); n.setSelectionRange(pos, pos);
-    });
+    let composing = false;
+    input.addEventListener("compositionstart", () => (composing = true));
+    input.addEventListener("compositionend", () => { composing = false; query = input.value; renderList(); });
+    input.addEventListener("input", () => { if (composing) return; query = input.value; renderList(); });
   }
 
   async function postView(id) {
@@ -219,6 +255,7 @@
     const isPost = /^\d{4}-\d{2}-\d{2}/.test(h);
     countView("/" + h, h || "home");
     if (isPost) { showViews(h); return postView(h); }
+    if (h.startsWith("y/")) { const [, y, m] = h.split("/"); return listView({ year: y, month: m }); }
     if (h.startsWith("c/")) return listView({ cat: h.slice(2) });
     if (h.startsWith("t/")) return listView({ tag: h.slice(2) });
     listView();
