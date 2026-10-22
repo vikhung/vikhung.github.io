@@ -5,6 +5,8 @@ category: 技術
 tags: [slack, webhook, curl]
 summary: 申請 Slack App、建立 Incoming Web Hook，一行 curl 就能推播訊息。
 ---
+![Slack Web Hook：用 curl 丟訊息到頻道](banner.svg)
+
 
 > 其實還有另一種複雜版，請搜尋 Slack API。
 

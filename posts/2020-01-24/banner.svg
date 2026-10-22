@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" role="img" aria-label="MongoDB (Ubuntu) 學習：安裝後的目錄與設定">
+<defs>
+  <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#064e3b"/><stop offset="1" stop-color="#0f766e"/></linearGradient>
+  <pattern id="p" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#fff" fill-opacity=".14"/></pattern>
+</defs>
+<rect width="1200" height="400" fill="url(#g)"/>
+<rect width="1200" height="400" fill="url(#p)"/>
+<circle cx="1010" cy="200" r="190" fill="#fff" fill-opacity=".07"/>
+<g transform="translate(760 0)"><ellipse cx="200" cy="120" rx="100" ry="28" fill="#fff" fill-opacity=".16" stroke="#fff" stroke-width="5"/>
+    <path d="M100 120v70M300 120v70" stroke="#fff" stroke-width="5"/><ellipse cx="200" cy="190" rx="100" ry="28" fill="#fff" fill-opacity=".16" stroke="#fff" stroke-width="5"/>
+    <path d="M100 190v70M300 190v70" stroke="#fff" stroke-width="5"/><ellipse cx="200" cy="260" rx="100" ry="28" fill="#fff" fill-opacity=".16" stroke="#fff" stroke-width="5"/>
+    <path d="M100 260v70M300 260v70" stroke="#fff" stroke-width="5"/><ellipse cx="200" cy="120" rx="100" ry="28" fill="#fff" fill-opacity=".35" stroke="#fff" stroke-width="5"/></g>
+<g font-family="'Noto Sans TC','Microsoft JhengHei','PingFang TC',system-ui,sans-serif">
+  <text x="64" y="76" font-size="20" font-weight="700" fill="#fff" fill-opacity=".85" font-family="Consolas,'Courier New',monospace">~/vik · 2020-01-24 · 技術</text>
+  <text x="64" y="167.6" font-size="54" font-weight="900" fill="#fff">MongoDB (Ubuntu) 學習</text><text x="64" y="235.1" font-size="54" font-weight="900" fill="#fff">：安裝後的目錄與設定</text>
+  <text x="64" y="360" font-size="20" fill="#fff" fill-opacity=".8" font-family="Consolas,'Courier New',monospace">#mongodb  #ubuntu</text>
+</g>
+</svg>

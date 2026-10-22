@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" role="img" aria-label="新家落成：我的數位筆記本改版了">
+<defs>
+  <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#92400e"/><stop offset="1" stop-color="#d97706"/></linearGradient>
+  <pattern id="p" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#fff" fill-opacity=".14"/></pattern>
+</defs>
+<rect width="1200" height="400" fill="url(#g)"/>
+<rect width="1200" height="400" fill="url(#p)"/>
+<circle cx="1010" cy="200" r="190" fill="#fff" fill-opacity=".07"/>
+<g transform="translate(760 0)"><path d="M200 120c-40-25-100-25-140-10v200c40-15 100-15 140 10z" fill="#fff"/>
+    <path d="M200 120c40-25 100-25 140-10v200c-40-15-100-15-140 10z" fill="#fff" fill-opacity=".8"/>
+    <g stroke="#b45309" stroke-width="5" stroke-linecap="round" opacity=".55"><path d="M85 170h85M85 205h85M85 240h85M230 170h85M230 205h85M230 240h85"/></g></g>
+<g font-family="'Noto Sans TC','Microsoft JhengHei','PingFang TC',system-ui,sans-serif">
+  <text x="64" y="76" font-size="20" font-weight="700" fill="#fff" fill-opacity=".85" font-family="Consolas,'Courier New',monospace">~/vik · 2026-10-20 · 新知</text>
+  <text x="64" y="167.6" font-size="54" font-weight="900" fill="#fff">新家落成：我的數位筆記</text><text x="64" y="235.1" font-size="54" font-weight="900" fill="#fff">本改版了</text>
+  <text x="64" y="360" font-size="20" fill="#fff" fill-opacity=".8" font-family="Consolas,'Courier New',monospace">#blog  #markdown  #公告</text>
+</g>
+</svg>

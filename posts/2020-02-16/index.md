@@ -5,6 +5,8 @@ category: 技術
 tags: [java, maven, mongodb, logging]
 summary: 用 Maven 引入 MongoDB Java Driver，並釐清 SLF4J、Logback、Log4j2 之間的關係與設定。
 ---
+![Java 連 MongoDB：Maven 管理套件與 SLF4J / Log4j2 日誌](banner.svg)
+
 
 ## Mongo Java Sample
 

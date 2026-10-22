@@ -5,6 +5,8 @@ category: 技術
 tags: [linux, java, mongodb, chromeos]
 summary: 在 Chrome OS 的 Linux 容器裡安裝 OpenJDK 8 與 MongoDB（以及 Ubuntu 的作法）。
 ---
+![Chrome OS Linux 安裝 OpenJDK 與 MongoDB](banner.svg)
+
 
 ## 一、OpenJDK
 

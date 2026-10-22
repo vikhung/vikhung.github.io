@@ -5,6 +5,8 @@ category: 技術
 tags: [github, git, vscode]
 summary: 從建立 vikhung.github.io Repository，到 GitHub Desktop 與 Visual Studio Code 的版控操作。
 ---
+![建立 GitHub Blog 與版控流程](banner.svg)
+
 
 ## 1. 建立 Blog 步驟
 

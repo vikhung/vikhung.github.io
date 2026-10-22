@@ -5,6 +5,8 @@ category: 技術
 tags: [git, cheatsheet]
 summary: status / add / commit / push 的基本流程與幾個實用參數。
 ---
+![Git 常用指令小抄](banner.svg)
+
 
 ```bash
 git status

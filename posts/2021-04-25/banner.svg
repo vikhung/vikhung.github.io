@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" role="img" aria-label="Minikube 安裝程序">
+<defs>
+  <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1e3a8a"/><stop offset="1" stop-color="#2563eb"/></linearGradient>
+  <pattern id="p" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#fff" fill-opacity=".14"/></pattern>
+</defs>
+<rect width="1200" height="400" fill="url(#g)"/>
+<rect width="1200" height="400" fill="url(#p)"/>
+<circle cx="1010" cy="200" r="190" fill="#fff" fill-opacity=".07"/>
+<g transform="translate(760 0)"><polygon points="200,90 290,133 312,230 250,308 150,308 88,230 110,133" fill="#fff" fill-opacity=".16" stroke="#fff" stroke-width="6" stroke-linejoin="round"/>
+    <circle cx="200" cy="215" r="26" fill="#fff"/>
+    <g fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M200 185L200 130"/><path d="M223.4549444740409 196.295305944238L266.45567600978256 162.00336684200767"/><path d="M229.2478373654547 221.67562801868942L282.868872535455 233.91427938628672"/><path d="M213.01651217352673 242.02906603707257L236.88011782499245 291.58235377170564"/><path d="M186.98348782647327 242.02906603707257L163.11988217500755 291.58235377170564"/><path d="M170.7521626345453 221.67562801868942L117.13112746454499 233.91427938628672"/><path d="M176.5450555259591 196.295305944238L133.54432399021746 162.00336684200767"/></g></g>
+<g font-family="'Noto Sans TC','Microsoft JhengHei','PingFang TC',system-ui,sans-serif">
+  <text x="64" y="76" font-size="20" font-weight="700" fill="#fff" fill-opacity=".85" font-family="Consolas,'Courier New',monospace">~/vik · 2021-04-25 · 技術</text>
+  <text x="64" y="200" font-size="54" font-weight="900" fill="#fff">Minikube 安裝程序</text>
+  <text x="64" y="360" font-size="20" fill="#fff" fill-opacity=".8" font-family="Consolas,'Courier New',monospace">#kubernetes  #minikube  #docker</text>
+</g>
+</svg>

@@ -5,6 +5,8 @@ category: 技術
 tags: [claude-code, nodejs, npm, AI, windows, macos, linux]
 summary: 朋友問我怎麼裝 Claude Code，補寫一篇：依作業系統安裝 Node.js、用 npm 安裝，最後用「幫我產生個人網頁」試試看。
 ---
+![如何安裝 Claude Code（Windows / macOS / Linux）](banner.svg)
+
 
 朋友問我怎麼安裝 Claude Code，我才發現當初裝的時候沒有把步驟記下來，所以補寫這篇。流程只有三步，**只有第 1 步（安裝 Node.js）會因作業系統而不同**。
 

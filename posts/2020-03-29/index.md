@@ -5,6 +5,8 @@ category: 技術
 tags: [spring-boot, java, rest]
 summary: 從 Eclipse 建立 Spring Boot 專案，到寫出第一支 REST API，再到用 Thymeleaf 顯示頁面。
 ---
+![Spring Boot 入門：建立專案、Controller 與 Thymeleaf 模板](banner.svg)
+
 
 ## 一、建立專案
 

@@ -5,6 +5,8 @@ category: 技術
 tags: [authenticator, 2fa]
 summary: Google Authenticator（TOTP）實作測試，詳細筆記放在 Notion。
 ---
+![Google Authenticator 測試](banner.svg)
+
 
 詳細內容請參考我的 Notion 筆記：
 

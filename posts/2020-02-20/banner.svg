@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" role="img" aria-label="Slack Web Hook：用 curl 丟訊息到頻道">
+<defs>
+  <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b0764"/><stop offset="1" stop-color="#6d28d9"/></linearGradient>
+  <pattern id="p" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#fff" fill-opacity=".14"/></pattern>
+</defs>
+<rect width="1200" height="400" fill="url(#g)"/>
+<rect width="1200" height="400" fill="url(#p)"/>
+<circle cx="1010" cy="200" r="190" fill="#fff" fill-opacity=".07"/>
+<g transform="translate(760 0)"><path d="M80 110h200a20 20 0 0120 20v100a20 20 0 01-20 20H170l-50 40v-40H80a20 20 0 01-20-20V130a20 20 0 0120-20z" fill="#fff"/>
+    <g fill="#6d28d9"><circle cx="130" cy="180" r="12"/><circle cx="180" cy="180" r="12"/><circle cx="230" cy="180" r="12"/></g>
+    <g fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M240 320h110M320 295l30 25-30 25"/></g></g>
+<g font-family="'Noto Sans TC','Microsoft JhengHei','PingFang TC',system-ui,sans-serif">
+  <text x="64" y="76" font-size="20" font-weight="700" fill="#fff" fill-opacity=".85" font-family="Consolas,'Courier New',monospace">~/vik · 2020-02-20 · 技術</text>
+  <text x="64" y="167.6" font-size="54" font-weight="900" fill="#fff">Slack Web Hook：用 cu</text><text x="64" y="235.1" font-size="54" font-weight="900" fill="#fff">rl 丟訊息到頻道</text>
+  <text x="64" y="360" font-size="20" fill="#fff" fill-opacity=".8" font-family="Consolas,'Courier New',monospace">#slack  #webhook  #curl</text>
+</g>
+</svg>

@@ -35,7 +35,7 @@
   --shadow: 0 8px 24px -12px rgba(0,0,0,.6);
 }
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+  :root:not([data-theme]) {
     --bg: #16181b; --bg-soft: #1d2024; --card: #1f2327; --ink: #e9e4d8;
     --ink-soft: #9a9488; --line: #31363b; --accent: #ff8a4c; --accent-soft: #3a2a20;
     --code-bg: #0f1113; --tag-tech: #6cb6d9; --tag-travel: #7cc58f; --tag-news: #e0a35a;
@@ -58,7 +58,7 @@ body {
 }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 3px; }
-::selection { background: var(--accent); color: #fff; }
+::selection { background: var(--accent); color: var(--on-accent, #fff); }
 
 .wrap { max-width: 860px; margin: 0 auto; padding: 0 20px; }
 
@@ -160,7 +160,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .md pre::before { content: attr(data-lang); position: absolute; top: 6px; right: 70px; font: 11px var(--font-mono); color: #8d8a80; text-transform: uppercase; }
 .md pre code { background: none; padding: 0; color: inherit; font-size: 13.5px; word-break: normal; white-space: pre; }
 .copy { position: absolute; top: 6px; right: 8px; font: 11px var(--font-mono); background: #ffffff1a; color: #cfcabc; border: 0; border-radius: 4px; padding: 2px 8px; cursor: pointer; }
-.copy:hover { background: var(--accent); color: #fff; }
+.copy:hover { background: var(--accent); color: var(--on-accent, #fff); }
 .md table { border-collapse: collapse; width: 100%; font-size: 15px; display: block; overflow-x: auto; }
 .md th, .md td { border: 1px solid var(--line); padding: 6px 12px; }
 .md th { background: var(--bg-soft); }
@@ -197,3 +197,70 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .chip.off { opacity: .35; }
 .chip.clear { border-style: dashed; color: var(--ink-soft); }
 .count { font: 12px var(--font-mono); color: var(--ink-soft); margin: 14px 0 0; }
+
+/* ---------- 主題選單 ---------- */
+.theme-box { position: relative; display: flex; gap: 8px; }
+.theme-menu {
+  position: absolute; right: 0; top: 44px; min-width: 170px; padding: 6px;
+  background: var(--card); border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--shadow);
+  display: none; flex-direction: column; gap: 2px; z-index: 30;
+}
+.theme-menu.on { display: flex; }
+.theme-menu button {
+  display: flex; align-items: center; gap: 10px; width: 100%; text-align: left;
+  font: 14px var(--font-sans); color: var(--ink); background: none; border: 0;
+  padding: 8px 10px; border-radius: 8px; cursor: pointer;
+}
+.theme-menu button:hover { background: var(--bg-soft); }
+.theme-menu button.on { font-weight: 700; color: var(--accent); }
+.theme-menu .sw { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--line); flex: none; }
+
+/* ---------- 洋流：橘白 ---------- */
+:root[data-theme="ocean"] {
+  --bg: #fffdfa; --bg-soft: #fff1e3; --card: #ffffff;
+  --ink: #2d2a26; --ink-soft: #7a6f64; --line: #ffd9b8;
+  --accent: #f26a00; --accent-soft: #ffe2c7; --on-accent: #fff;
+  --code-bg: #2a1a0e; --code-ink: #ffe9d2;
+  --tag-tech: #e8590c; --tag-travel: #d97706; --tag-news: #c2410c;
+  --shadow: 0 8px 24px -12px rgba(242,106,0,.35);
+}
+:root[data-theme="ocean"] body {
+  background-image: linear-gradient(180deg, #fff3e6 0, #fffdfa 260px), radial-gradient(#ffe3cb 1px, transparent 1px);
+  background-size: 100% 100%, 22px 22px;
+}
+:root[data-theme="ocean"] .site-head { border-bottom: 3px solid var(--accent); }
+:root[data-theme="ocean"] .chip.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* ---------- 陽光：明亮黃 ---------- */
+:root[data-theme="sun"] {
+  --bg: #fff7d1; --bg-soft: #ffeea0; --card: #fffbe8;
+  --ink: #3a2c00; --ink-soft: #7d6a28; --line: #f2d96b;
+  --accent: #d97b00; --accent-soft: #ffe08a; --on-accent: #fff;
+  --code-bg: #2f2500; --code-ink: #fff0bf;
+  --tag-tech: #2b7bb9; --tag-travel: #3b8f3b; --tag-news: #c2570c;
+  --shadow: 0 8px 24px -12px rgba(160,110,0,.4);
+}
+:root[data-theme="sun"] body {
+  background-image: radial-gradient(circle at 90% -10%, #ffe45c 0, rgba(255,228,92,0) 420px), radial-gradient(#f2d96b 1px, transparent 1px);
+  background-size: 100% 100%, 22px 22px;
+}
+
+/* ---------- 科技：黑底螢光綠 ---------- */
+:root[data-theme="tech"] {
+  --bg: #05090d; --bg-soft: #0b141c; --card: #0b131a;
+  --ink: #cfeee0; --ink-soft: #6f9a8a; --line: #17323a;
+  --accent: #00f5a0; --accent-soft: #063a2c; --on-accent: #02130d;
+  --code-bg: #02060a; --code-ink: #b5ffe1;
+  --tag-tech: #0a7ea4; --tag-travel: #0a8f5c; --tag-news: #9a6a00;
+  --font-serif: "JetBrains Mono", "Cascadia Code", Consolas, "Noto Sans TC", monospace;
+  --shadow: 0 0 22px -8px rgba(0,245,160,.35);
+}
+:root[data-theme="tech"] body {
+  background-image: linear-gradient(rgba(0,245,160,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,245,160,.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+:root[data-theme="tech"] .site-head { border-bottom: 1px solid var(--accent); box-shadow: 0 0 18px -6px var(--accent); }
+:root[data-theme="tech"] .hero h1 { text-shadow: 0 0 14px rgba(0,245,160,.45); font-weight: 700; }
+:root[data-theme="tech"] .post-item:hover { box-shadow: 0 0 0 1px var(--accent), var(--shadow); }
+:root[data-theme="tech"] .chip.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+:root[data-theme="tech"] .cat { color: #fff; }

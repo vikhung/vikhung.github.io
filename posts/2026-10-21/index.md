@@ -5,6 +5,8 @@ category: 技術
 tags: [goatcounter, github-pages, javascript, 計數器]
 summary: 純靜態的單頁式網誌如何加上瀏覽次數：註冊 GoatCounter、手動計數、顯示次數，以及我踩到的幾個坑。
 ---
+![在 GitHub Pages 加上 GoatCounter 瀏覽計數器](banner.svg)
+
 
 GitHub Pages 只能放靜態檔案，沒有後端可以存資料，所以計數器要靠第三方服務。
 我選 [GoatCounter](https://www.goatcounter.com)：個人非商業使用免費、不用 cookie（網站不需要加 cookie 提示）、後台可以看每一頁的瀏覽量。

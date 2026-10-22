@@ -5,6 +5,8 @@ category: 技術
 tags: [linux, java]
 summary: 新 Linux 主機到手後，先裝這幾樣。
 ---
+![Linux 安裝 AP SOP](banner.svg)
+
 
 1. Java：
 

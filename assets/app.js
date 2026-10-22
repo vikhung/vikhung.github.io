@@ -17,13 +17,34 @@
 
   /* ---------- theme ---------- */
   const root = document.documentElement;
-  try { const t = localStorage.getItem("theme"); if (t) root.dataset.theme = t; } catch (e) {}
+  const THEMES = [
+    { id: "light", name: "手札（預設）", sw: "#c8501e" },
+    { id: "dark", name: "夜間", sw: "#16181b" },
+    { id: "ocean", name: "洋流（橘白）", sw: "#f26a00" },
+    { id: "sun", name: "陽光", sw: "#ffd93d" },
+    { id: "tech", name: "科技", sw: "#00f5a0" },
+  ];
+  const DARK_THEMES = ["dark", "tech"];
+  const setTheme = (id) => {
+    root.dataset.theme = id;
+    try { localStorage.setItem("theme", id); } catch (e) {}
+    $("#themeMenu").querySelectorAll("button").forEach((b) => b.classList.toggle("on", b.dataset.id === id));
+  };
+  try { const t = localStorage.getItem("theme"); if (THEMES.some((x) => x.id === t)) root.dataset.theme = t; } catch (e) {}
+  $("#themeMenu").innerHTML = THEMES.map((t) =>
+    `<button role="menuitem" data-id="${t.id}"><span class="sw" style="background:${t.sw}"></span>${t.name}</button>`).join("");
+  $("#themeMenu").querySelectorAll("button").forEach((b) =>
+    b.classList.toggle("on", b.dataset.id === root.dataset.theme));
+  $("#themeMenu").addEventListener("click", (e) => {
+    const b = e.target.closest("button"); if (!b) return;
+    setTheme(b.dataset.id);
+    $("#themeMenu").classList.remove("on");
+  });
+  $("#palette").addEventListener("click", (e) => { e.stopPropagation(); $("#themeMenu").classList.toggle("on"); });
+  document.addEventListener("click", () => $("#themeMenu").classList.remove("on"));
   $("#theme").addEventListener("click", () => {
-    const dark = root.dataset.theme
-      ? root.dataset.theme === "dark"
-      : matchMedia("(prefers-color-scheme: dark)").matches;
-    root.dataset.theme = dark ? "light" : "dark";
-    try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+    const cur = root.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    setTheme(DARK_THEMES.includes(cur) ? "light" : "dark");
   });
 
   /* ---------- helpers ---------- */

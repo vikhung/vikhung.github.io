@@ -5,6 +5,8 @@ category: 技術
 tags: [mongodb, ubuntu]
 summary: 安裝完成後兩個重要位置、設定檔，以及常用服務指令。
 ---
+![MongoDB (Ubuntu) 學習：安裝後的目錄與設定](banner.svg)
+
 
 ## 1. Directories
 

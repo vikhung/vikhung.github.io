@@ -5,6 +5,8 @@ category: 技術
 tags: [chromeos, linux]
 summary: 家裡有舊 NB 的話，可以用 CloudReady 灌上 Chrome OS，還能順便啟用 Linux。
 ---
+![舊筆電新生命：用 CloudReady 安裝 Chrome OS](banner.svg)
+
 
 如果家裡有舊 NB，可以用以下方法安裝 Chrome OS。
 

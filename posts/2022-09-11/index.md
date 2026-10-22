@@ -5,6 +5,8 @@ category: 技術
 tags: [nodejs, npm, angular]
 summary: npm 初始化、套件管理，以及從零建立第一個 Angular 專案與四種資料綁定。
 ---
+![Node.js 基本指令與 Angular 起手式](banner.svg)
+
 
 ## Node
 

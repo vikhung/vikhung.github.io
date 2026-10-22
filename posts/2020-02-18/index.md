@@ -5,6 +5,8 @@ category: 技術
 tags: [mongodb, git, eclipse, linux]
 summary: MongoDB shell 常用查詢（含 Like 查詢），以及在 Linux 與 Eclipse 連接 GitHub 的步驟。
 ---
+![Mongo 常用語法與 Linux / Eclipse 連 GitHub](banner.svg)
+
 
 ## Mongo 常用語法
 

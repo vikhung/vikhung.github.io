@@ -6,6 +6,8 @@ tags: [blog, markdown, 公告]
 summary: 網站改成「一天一個資料夾、一篇 Markdown」的格式，舊的技術筆記也全部搬過來了。
 cover: cover.svg
 ---
+![新家落成：我的數位筆記本改版了](banner.svg)
+
 
 這個網站從 2020 年開始，一直是一張很長很長的 Bootstrap 表格——能用，但越寫越難找。
 今天起改版：**一天一個資料夾，一篇 Markdown**，要放照片就丟進同一個資料夾。

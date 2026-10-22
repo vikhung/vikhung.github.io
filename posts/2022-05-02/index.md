@@ -5,6 +5,8 @@ category: 技術
 tags: [elasticsearch, kibana, docker, wsl2, ubuntu]
 summary: 在 Ubuntu 安裝 ES 8.1 與 Kibana 的完整步驟、移除舊版 ES 的方法，以及 WSL2 安裝 Docker 的做法。
 ---
+![Elasticsearch / Kibana 8.1 安裝與 Docker (WSL2)](banner.svg)
+
 
 ## 安裝 Elasticsearch（Ubuntu）
 

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" role="img" aria-label="MongoDB Replica Set 實驗：用三個 Port 模擬三台主機">
+<defs>
+  <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#052e16"/><stop offset="1" stop-color="#15803d"/></linearGradient>
+  <pattern id="p" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#fff" fill-opacity=".14"/></pattern>
+</defs>
+<rect width="1200" height="400" fill="url(#g)"/>
+<rect width="1200" height="400" fill="url(#p)"/>
+<circle cx="1010" cy="200" r="190" fill="#fff" fill-opacity=".07"/>
+<g transform="translate(760 0)"><g fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M200 110L110 270H290Z"/></g><circle cx="200" cy="110" r="42" fill="#fde68a"/><circle cx="200" cy="110" r="42" fill="none" stroke="#0004" stroke-width="3"/><circle cx="110" cy="270" r="42" fill="#fff"/><circle cx="110" cy="270" r="42" fill="none" stroke="#0004" stroke-width="3"/><circle cx="290" cy="270" r="42" fill="#fff"/><circle cx="290" cy="270" r="42" fill="none" stroke="#0004" stroke-width="3"/></g>
+<g font-family="'Noto Sans TC','Microsoft JhengHei','PingFang TC',system-ui,sans-serif">
+  <text x="64" y="76" font-size="20" font-weight="700" fill="#fff" fill-opacity=".85" font-family="Consolas,'Courier New',monospace">~/vik · 2020-01-28 · 技術</text>
+  <text x="64" y="173.6" font-size="44" font-weight="900" fill="#fff">MongoDB Replica Set 實驗：</text><text x="64" y="228.6" font-size="44" font-weight="900" fill="#fff">用三個 Port 模擬三台主機</text>
+  <text x="64" y="360" font-size="20" fill="#fff" fill-opacity=".8" font-family="Consolas,'Courier New',monospace">#mongodb  #replication  #linux</text>
+</g>
+</svg>

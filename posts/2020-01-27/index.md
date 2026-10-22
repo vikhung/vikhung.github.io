@@ -5,6 +5,8 @@ category: 技術
 tags: [mongodb, replication]
 summary: 本機正常、遠端失敗？原來要把實際 IP 寫進 bindIp。另外整理 Replica Set 的成員類型與架構。
 ---
+![MongoDB 遠端連線設定與 Replication 觀念](banner.svg)
+
 
 ## 連線方式
 

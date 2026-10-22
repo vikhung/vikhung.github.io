@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" role="img" aria-label="舊筆電新生命：用 CloudReady 安裝 Chrome OS">
+<defs>
+  <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f4c5c"/><stop offset="1" stop-color="#1d7a8c"/></linearGradient>
+  <pattern id="p" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#fff" fill-opacity=".14"/></pattern>
+</defs>
+<rect width="1200" height="400" fill="url(#g)"/>
+<rect width="1200" height="400" fill="url(#p)"/>
+<circle cx="1010" cy="200" r="190" fill="#fff" fill-opacity=".07"/>
+<g transform="translate(760 0)"><rect x="90" y="110" width="220" height="150" rx="12" fill="#fff" fill-opacity=".16" stroke="#fff" stroke-width="6"/>
+    <path d="M60 280h280l-20 24H80z" fill="#fff"/><circle cx="200" cy="185" r="38" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="200" cy="185" r="14" fill="#fff"/></g>
+<g font-family="'Noto Sans TC','Microsoft JhengHei','PingFang TC',system-ui,sans-serif">
+  <text x="64" y="76" font-size="20" font-weight="700" fill="#fff" fill-opacity=".85" font-family="Consolas,'Courier New',monospace">~/vik · 2020-01-22 · 技術</text>
+  <text x="64" y="167.6" font-size="54" font-weight="900" fill="#fff">舊筆電新生命：用 Cloud</text><text x="64" y="235.1" font-size="54" font-weight="900" fill="#fff">Ready 安裝 Chrome OS</text>
+  <text x="64" y="360" font-size="20" fill="#fff" fill-opacity=".8" font-family="Consolas,'Courier New',monospace">#chromeos  #linux</text>
+</g>
+</svg>

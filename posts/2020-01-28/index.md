@@ -5,6 +5,8 @@ category: 技術
 tags: [mongodb, replication, linux]
 summary: 在同一台 Linux 上開三個 mongod，建立 Replica Set，並用關機/開機實驗驗證選舉與同步。附 Linux 背景服務常用指令。
 ---
+![MongoDB Replica Set 實驗：用三個 Port 模擬三台主機](banner.svg)
+
 
 ## 一、準備三台環境，並各自驗證成功
 

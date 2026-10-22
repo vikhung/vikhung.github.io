@@ -5,6 +5,8 @@ category: 技術
 tags: [kubernetes, minikube, docker]
 summary: 在 Ubuntu 上安裝 kubectl 與 minikube，並用 docker driver 啟動。
 ---
+![Minikube 安裝程序](banner.svg)
+
 
 ## 1. 安裝 kubectl 工具
 
