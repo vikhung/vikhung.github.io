@@ -1,5 +1,22 @@
 [
   {
+    "id": "2026-10-22",
+    "title": "如何安裝 Claude Code（Windows / macOS / Linux）",
+    "date": "2026-10-22",
+    "category": "技術",
+    "tags": [
+      "claude-code",
+      "nodejs",
+      "npm",
+      "AI",
+      "windows",
+      "macos",
+      "linux"
+    ],
+    "summary": "朋友問我怎麼裝 Claude Code，補寫一篇：依作業系統安裝 Node.js、用 npm 安裝，最後用「幫我產生個人網頁」試試看。",
+    "cover": ""
+  },
+  {
     "id": "2026-10-21",
     "title": "在 GitHub Pages 加上 GoatCounter 瀏覽計數器",
     "date": "2026-10-21",
