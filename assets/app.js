@@ -205,6 +205,11 @@
       </article>`;
 
     const mdEl = $(".md");
+    // 影片：src 若是相對路徑，同樣指向當天資料夾
+    mdEl.querySelectorAll("video[src], video source[src]").forEach((el) => {
+      const src = el.getAttribute("src");
+      if (isRel(src)) el.setAttribute("src", base + src);
+    });
     mdEl.querySelectorAll("pre").forEach((pre) => {
       const code = pre.querySelector("code");
       const m = (code?.className || "").match(/language-(\w+)/);
@@ -220,9 +225,20 @@
       pre.appendChild(btn);
     });
     mdEl.querySelectorAll("a[href^='http']").forEach((a) => { a.target = "_blank"; a.rel = "noopener"; });
-    mdEl.querySelectorAll("img").forEach((img) => img.addEventListener("click", () => {
-      const lb = $("#lightbox"); lb.querySelector("img").src = img.src; lb.classList.add("on");
-    }));
+    mdEl.querySelectorAll("img").forEach((img) => {
+      const zoomable = !img.src.endsWith(".svg");   // banner / SVG 圖不自動放大
+      if (!img.title) img.title = zoomable ? "停留 1 秒或點擊放大，按 Esc 關閉" : "點擊放大";
+      let timer;
+      img.addEventListener("click", () => { clearTimeout(timer); openLightbox(img); });
+      if (!zoomable) return;
+      img.addEventListener("mouseenter", () => {
+        if (lockImg === img) return;   // 剛關閉燈箱、滑鼠仍停在這張圖上時，不要馬上再開
+        clearTimeout(timer);
+        timer = setTimeout(() => openLightbox(img), HOVER_ZOOM_MS);
+      });
+      img.addEventListener("mouseleave", () => { clearTimeout(timer); if (lockImg === img) lockImg = null; });
+    });
+    pairPortraits(mdEl);
   }
 
   /* ---------- 計數器 (GoatCounter) ---------- */
@@ -282,9 +298,56 @@
     listView();
   }
 
+  /* 連續的直式照片（各自單獨一段）併成並排，每列最多 3 張，省下版面 */
+  function pairPortraits(mdEl) {
+    const isImgP = (el) => el.tagName === "P" && el.children.length === 1 && el.firstElementChild.tagName === "IMG" && !el.textContent.trim();
+    const runs = []; let cur = [];
+    for (const el of mdEl.children) {
+      if (isImgP(el)) cur.push(el);
+      else { if (cur.length > 1) runs.push(cur); cur = []; }
+    }
+    if (cur.length > 1) runs.push(cur);
+    runs.forEach(async (run) => {
+      const imgs = run.map((p) => p.firstElementChild);
+      imgs.forEach((i) => { i.loading = "eager"; });   // 要先知道長寬才能判斷直式
+      await Promise.all(imgs.map((i) => i.decode().catch(() => {})));
+      const portrait = (i) => i.naturalHeight > i.naturalWidth;
+      // 找出連續的直式照片，每列最多 3 張（剩 4 張時拆成 2+2）；橫式照片維持單獨一張
+      for (let k = 0; k < run.length; ) {
+        let end = k;
+        while (end < run.length && portrait(imgs[end])) end++;
+        if (end === k) { k++; continue; }
+        for (let rem = end - k; rem > 1; ) {
+          const n = rem === 4 ? 2 : Math.min(3, rem);
+          const box = document.createElement("div");
+          box.className = `gallery n${n}`;
+          run[k].before(box);
+          box.append(...run.slice(k, k + n));
+          k += n; rem -= n;
+        }
+        k = end;
+      }
+    });
+  }
+
+  /* ---------- 燈箱：滑鼠停留自動放大，滑開後仍保持，按 Esc（或點一下）關閉 ---------- */
+  const HOVER_ZOOM_MS = 1500;
   const lb = $("#lightbox");
-  lb.addEventListener("click", () => lb.classList.remove("on"));
-  addEventListener("keydown", (e) => { if (e.key === "Escape") lb.classList.remove("on"); });
+  let lockImg = null;
+  const mouse = { x: 0, y: 0 };
+  addEventListener("mousemove", (e) => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+  function openLightbox(img) {
+    lb.querySelector("img").src = img.src;
+    lb.classList.add("on");
+  }
+  function closeLightbox() {
+    if (!lb.classList.contains("on")) return;
+    lb.classList.remove("on");
+    const el = document.elementFromPoint(mouse.x, mouse.y);
+    lockImg = el && el.tagName === "IMG" && el.closest(".md") ? el : null;
+  }
+  lb.addEventListener("click", closeLightbox);
+  addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });
 
   fetch(`${POSTS_DIR}/posts.json`)
     .then((r) => r.json())

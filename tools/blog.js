@@ -74,13 +74,22 @@ summary: 一句話摘要（會顯示在列表）
 }
 
 function serve(port) {
-  const types = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".md": "text/markdown", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp", ".gif": "image/gif" };
+  const types = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".md": "text/markdown", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp", ".gif": "image/gif", ".mp4": "video/mp4", ".webm": "video/webm", ".mov": "video/quicktime" };
   http.createServer((req, res) => {
     let p = decodeURIComponent(req.url.split("?")[0]);
     if (p.endsWith("/")) p += "index.html";
     const f = path.join(ROOT, p);
     if (!f.startsWith(ROOT) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) { res.writeHead(404); return res.end("404"); }
-    res.writeHead(200, { "Content-Type": (types[path.extname(f).toLowerCase()] || "application/octet-stream") + "; charset=utf-8" });
+    const type = (types[path.extname(f).toLowerCase()] || "application/octet-stream") + "; charset=utf-8";
+    const size = fs.statSync(f).size;
+    const range = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range || "");   // 影片拖曳進度需要 Range
+    if (range) {
+      const start = range[1] ? +range[1] : 0;
+      const end = range[2] ? Math.min(+range[2], size - 1) : size - 1;
+      res.writeHead(206, { "Content-Type": type, "Accept-Ranges": "bytes", "Content-Range": `bytes ${start}-${end}/${size}`, "Content-Length": end - start + 1 });
+      return fs.createReadStream(f, { start, end }).pipe(res);
+    }
+    res.writeHead(200, { "Content-Type": type, "Accept-Ranges": "bytes", "Content-Length": size });
     fs.createReadStream(f).pipe(res);
   }).listen(port, () => console.log(`預覽中：http://localhost:${port}`));
 }

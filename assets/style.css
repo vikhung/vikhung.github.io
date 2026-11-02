@@ -264,3 +264,21 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 :root[data-theme="tech"] .post-item:hover { box-shadow: 0 0 0 1px var(--accent), var(--shadow); }
 :root[data-theme="tech"] .chip.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
 :root[data-theme="tech"] .cat { color: #fff; }
+
+/* 文章內的影片（手機直式影片限制高度） */
+.md video { display: block; max-width: 100%; max-height: 80vh; margin: 1.4em auto; border-radius: 10px; border: 1px solid var(--line); box-shadow: var(--shadow); background: #000; }
+
+/* 文章內照片：預設縮小顯示，點擊後由燈箱放大。banner 與 SVG 圖維持滿版 */
+.md img { width: auto; max-width: 100%; max-height: 380px; object-fit: contain; }
+.md img[src$=".svg"] { width: 100%; max-height: none; }
+@media (max-width: 560px) { .md img { max-height: 320px; } }
+
+/* 連續的直式照片並排（每列 2～3 張）；窄螢幕自動改成每列 2 張再換行 */
+.gallery { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: flex-start; margin: 1.4em 0; }
+.gallery > p { min-width: 0; margin: 0; }
+.gallery.n2 > p { flex: 0 1 300px; }
+.gallery.n3 > p { flex: 0 1 270px; }
+.gallery img { width: 100%; max-height: none; margin: 0; }
+@media (max-width: 700px) {
+  .gallery.n2 > p, .gallery.n3 > p { flex: 0 0 calc(50% - 6px); }
+}
