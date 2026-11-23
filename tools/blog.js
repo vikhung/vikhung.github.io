@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 /* 部落格小工具（只需 Node.js，無需安裝套件）
  *   node tools/blog.js new [YYYY-MM-DD] [標題]   建立當天資料夾與 index.md（預設今天）
+ *   node tools/blog.js touch YYYY-MM-DD         把該篇文章標記為「今天更新」（寫入 updated 欄位）
+ *   node tools/blog.js del YYYY-MM-DD [--yes]   刪除整個當天資料夾（文章、照片、banner），預設會先詢問確認
  *   node tools/blog.js build                    掃描 posts/*​/index.md，重建 posts/posts.json
  *   node tools/blog.js serve [port]             本機預覽 http://localhost:8080
  */
@@ -42,6 +44,7 @@ function build() {
       tags: fm.tags || [],
       summary: fm.summary || "",
       cover: fm.cover || "",
+      ...(fm.updated && fm.updated !== (fm.date || dir) ? { updated: fm.updated } : {}),
     });
   }
   list.sort((a, b) => (a.id < b.id ? 1 : -1));
@@ -73,6 +76,44 @@ summary: 一句話摘要（會顯示在列表）
   build();
 }
 
+function touch(id) {
+  const file = path.join(POSTS, id || "", "index.md");
+  if (!DAY.test(id || "") || !fs.existsSync(file)) return console.error("用法：npm run touch <日期>，日期格式 YYYY-MM-DD（該天須已有文章）");
+  const today = new Date().toLocaleDateString("sv-SE");
+  const text = fs.readFileSync(file, "utf8");
+  const m = text.match(/^(﻿?---\r?\n)([\s\S]*?)(\r?\n---)/);
+  if (!m) return console.error("找不到 front matter：" + file);
+  const eol = m[1].endsWith("\r\n") ? "\r\n" : "\n";
+  const body = /^updated\s*:.*$/m.test(m[2])
+    ? m[2].replace(/^updated\s*:.*$/m, `updated: ${today}`)
+    : m[2].replace(/^(date\s*:.*)$/m, `$1${eol}updated: ${today}`);
+  fs.writeFileSync(file, m[1] + body + text.slice(m[1].length + m[2].length));
+  console.log(`${id} 已標記更新日期 ${today}`);
+  build();
+}
+
+function del(id, yes) {
+  const dir = path.join(POSTS, id || "");
+  if (!DAY.test(id || "") || !fs.existsSync(dir)) return console.error("用法：npm run del <日期>，日期格式 YYYY-MM-DD（該天資料夾須存在）");
+  const files = fs.readdirSync(dir, { recursive: true }).map(String);
+  const title = (parseFrontMatter(fs.existsSync(path.join(dir, "index.md")) ? fs.readFileSync(path.join(dir, "index.md"), "utf8") : "").title) || "(無標題)";
+  console.log(`即將刪除 ${path.relative(ROOT, dir)}/ 「${title}」，共 ${files.length} 個檔案：`);
+  files.slice(0, 20).forEach((f) => console.log("  - " + f));
+  if (files.length > 20) console.log(`  …另外 ${files.length - 20} 個`);
+  const go = () => {
+    fs.rmSync(dir, { recursive: true, force: true });
+    console.log(`已刪除 ${path.relative(ROOT, dir)}/（若已 commit 過，可用 git checkout HEAD -- posts/${id} 救回）`);
+    build();
+  };
+  if (yes) return go();
+  if (!process.stdin.isTTY) return console.error("非互動環境，請加上 yes 確認刪除：npm run del " + id + " yes");
+  const rl = require("readline").createInterface({ input: process.stdin, output: process.stdout });
+  rl.question("確定要刪除嗎？輸入 y 確認（其他鍵取消）：", (ans) => {
+    rl.close();
+    /^y(es)?$/i.test(ans.trim()) ? go() : console.log("已取消，沒有刪除任何檔案。");
+  });
+}
+
 function serve(port) {
   const types = { ".html": "text/html", ".js": "text/javascript", ".css": "text/css", ".json": "application/json", ".md": "text/markdown", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp", ".gif": "image/gif", ".mp4": "video/mp4", ".webm": "video/webm", ".mov": "video/quicktime" };
   http.createServer((req, res) => {
@@ -97,5 +138,7 @@ function serve(port) {
 const [cmd, a, ...rest] = process.argv.slice(2);
 if (cmd === "build") build();
 else if (cmd === "new") DAY.test(a || "") ? create(a, rest.join(" ")) : create(null, [a, ...rest].filter(Boolean).join(" "));
+else if (cmd === "touch") touch(a);
+else if (cmd === "del") del(a, rest.some((x) => /^(--yes|-y|y|yes)$/i.test(x)));
 else if (cmd === "serve") serve(Number(a) || 8080);
-else console.log("用法：node tools/blog.js new [日期] [標題] | build | serve [port]");
+else console.log("用法：npm start | npm run new [日期] [標題] | npm run del <日期> | npm run touch <日期> | npm run build（<> 必填、[] 選填，日期格式 YYYY-MM-DD）");

@@ -59,6 +59,22 @@
     const words = (md.replace(/[一-鿿]/g, " ").match(/\S+/g) || []).length;
     return Math.max(1, Math.round(cjk / 400 + words / 220));
   }
+  // 「最近更新」：updated 在 RECENT_DAYS 天內的舊文
+  const RECENT_DAYS = 60;
+  const daysAgo = (d) => (Date.now() - new Date(d + "T00:00:00").getTime()) / 864e5;
+  const isRecentUpdate = (p) => p.updated && daysAgo(p.updated) <= RECENT_DAYS;
+  const updBadge = (p) => p.updated ? `<span class="upd ${isRecentUpdate(p) ? "new" : ""}" title="最後更新 ${esc(p.updated)}">✎ 更新於 ${esc(p.updated)}</span>` : "";
+  function recentBlock() {
+    const list = posts.filter(isRecentUpdate).sort((a, b) => (a.updated < b.updated ? 1 : -1)).slice(0, 5);
+    if (!list.length) return "";
+    return `<section class="recent">
+      <p class="recent-head"><span class="p">$</span> git log --since=${RECENT_DAYS}.days <b>最近更新</b></p>
+      ${list.map((p) => `<a class="recent-item" href="#/${p.id}">
+        <span class="recent-date">${esc(p.updated.slice(5).replace("-", "/"))}</span>
+        <span class="recent-title">${esc(p.title)}</span>
+        <span class="recent-orig">原文 ${esc(p.date)}</span></a>`).join("")}
+    </section>`;
+  }
   const catChip = (c) => `<span class="cat ${esc(c)}">${esc(c)}</span>`;
   const tagLinks = (tags) => (tags || []).map((t) => `<a class="tag" href="#/t/${enc(t)}">${esc(t)}</a>`).join("");
 
@@ -111,6 +127,7 @@
           <div class="chips">${chips}</div>
           <input class="search" id="q" type="search" placeholder="/ 搜尋文章（搜尋所有年份）" value="${esc(query)}">
         </div>
+        ${!filter?.cat && !filter?.tag ? recentBlock() : ""}
         <div class="toolbar years"><div class="chips">${yearChips}</div></div>
         ${monthChips}
         ${hint}
@@ -140,7 +157,7 @@
           <div>
             <h2 class="post-title">${esc(p.title)}</h2>
             ${p.summary ? `<p class="post-sum">${esc(p.summary)}</p>` : ""}
-            <div class="meta">${catChip(p.category)}${(p.tags || []).map((t) => `<span class="tag">${esc(t)}</span>`).join("")}</div>
+            <div class="meta">${catChip(p.category)}${(p.tags || []).map((t) => `<span class="tag">${esc(t)}</span>`).join("")}${updBadge(p)}</div>
           </div>
           ${p.cover ? `<img class="thumb" loading="lazy" src="${POSTS_DIR}/${p.id}/${esc(p.cover)}" alt="">` : ""}
         </a>`;
@@ -193,7 +210,7 @@
         <div class="crumb"><a href="#/">~/blog</a> / ${esc(id)} / index.md</div>
         <h1 class="title">${esc(meta.title)}</h1>
         <div class="meta">
-          <span>${esc(meta.date)}</span>${catChip(meta.category)}${tagLinks(meta.tags)}
+          <span>${esc(meta.date)}</span>${updBadge(meta)}${catChip(meta.category)}${tagLinks(meta.tags)}
           <span>· 約 ${readingMinutes(md)} 分鐘</span>
           <span class="views" id="views">👁 統計中…</span>
         </div>

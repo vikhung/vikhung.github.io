@@ -282,3 +282,17 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 @media (max-width: 700px) {
   .gallery.n2 > p, .gallery.n3 > p { flex: 0 0 calc(50% - 6px); }
 }
+
+/* ---------- 最近更新 ---------- */
+.recent { margin: 4px 0 18px; padding: 14px 18px; background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 10px; box-shadow: var(--shadow); }
+.recent-head { margin: 0 0 8px; font-family: var(--font-mono); font-size: 13px; color: var(--ink-soft); }
+.recent-head .p { color: var(--accent); }
+.recent-head b { color: var(--ink); margin-left: 6px; }
+.recent-item { display: flex; align-items: baseline; gap: 12px; padding: 6px 4px; border-radius: 6px; color: var(--ink); }
+.recent-item:hover { background: var(--bg-soft); text-decoration: none; }
+.recent-date { font-family: var(--font-mono); font-size: 13px; color: var(--accent); font-weight: 700; flex: none; }
+.recent-title { font-weight: 500; flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.recent-orig { font-family: var(--font-mono); font-size: 12px; color: var(--ink-soft); flex: none; }
+.upd { font-family: var(--font-mono); font-size: 12px; color: var(--ink-soft); }
+.upd.new { color: var(--accent); background: var(--accent-soft); padding: 1px 8px; border-radius: 999px; font-weight: 700; }
+@media (max-width: 600px) { .recent-orig { display: none; } }

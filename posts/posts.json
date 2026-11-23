@@ -72,7 +72,8 @@
       "石碇"
     ],
     "summary": "久仰大名的皇帝殿，這次終於走了一趟經典大O型縱走，刺激但難度還好，六個多小時的充實行程。",
-    "cover": ""
+    "cover": "",
+    "updated": "2026-11-20"
   },
   {
     "id": "2026-10-11",
@@ -273,15 +274,16 @@
   },
   {
     "id": "2020-01-22",
-    "title": "舊筆電新生命：用 CloudReady 安裝 Chrome OS",
+    "title": "舊筆電新生命：用 ChromeOS Flex 重生",
     "date": "2020-01-22",
     "category": "技術",
     "tags": [
       "chromeos",
       "linux"
     ],
-    "summary": "家裡有舊 NB 的話，可以用 CloudReady 灌上 Chrome OS，還能順便啟用 Linux。",
-    "cover": ""
+    "summary": "家裡有舊 NB 的話，可以用 Google 官方的 ChromeOS Flex（前身為 CloudReady）灌上 ChromeOS，還能順便啟用 Linux。",
+    "cover": "",
+    "updated": "2026-11-20"
   },
   {
     "id": "2020-01-11",

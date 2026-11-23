@@ -101,9 +101,10 @@ const width = (s) => [...s].reduce((w, ch) => w + (ch.charCodeAt(0) > 255 ? 1 : 
 
 function wrap(title, maxEm) {
   const lines = []; let cur = "";
-  for (const ch of title) {
-    if (width(cur + ch) > maxEm && cur) { lines.push(cur); cur = ""; }
-    cur += ch;
+  // 英文單字（含後方空白）視為一個單位，不在單字中間斷行
+  for (const tok of title.match(/[A-Za-z0-9.+#_-]+\s*|\s+|./gu) || []) {
+    if (width(cur + tok.trimEnd()) > maxEm && cur) { lines.push(cur.trimEnd()); cur = ""; }
+    cur += cur ? tok : tok.trimStart();
   }
   if (cur) lines.push(cur);
   return lines.slice(0, 3);

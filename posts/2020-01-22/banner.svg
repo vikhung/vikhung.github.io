@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" role="img" aria-label="舊筆電新生命：用 CloudReady 安裝 Chrome OS">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" role="img" aria-label="舊筆電新生命：用 ChromeOS Flex 重生">
 <defs>
   <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0f4c5c"/><stop offset="1" stop-color="#1d7a8c"/></linearGradient>
   <pattern id="p" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#fff" fill-opacity=".14"/></pattern>
@@ -10,7 +10,7 @@
     <path d="M60 280h280l-20 24H80z" fill="#fff"/><circle cx="200" cy="185" r="38" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="200" cy="185" r="14" fill="#fff"/></g>
 <g font-family="'Noto Sans TC','Microsoft JhengHei','PingFang TC',system-ui,sans-serif">
   <text x="64" y="76" font-size="20" font-weight="700" fill="#fff" fill-opacity=".85" font-family="Consolas,'Courier New',monospace">~/vik · 2020-01-22 · 技術</text>
-  <text x="64" y="167.6" font-size="54" font-weight="900" fill="#fff">舊筆電新生命：用 Cloud</text><text x="64" y="235.1" font-size="54" font-weight="900" fill="#fff">Ready 安裝 Chrome OS</text>
+  <text x="64" y="167.6" font-size="54" font-weight="900" fill="#fff">舊筆電新生命：用</text><text x="64" y="235.1" font-size="54" font-weight="900" fill="#fff">ChromeOS Flex 重生</text>
   <text x="64" y="360" font-size="20" fill="#fff" fill-opacity=".8" font-family="Consolas,'Courier New',monospace">#chromeos  #linux</text>
 </g>
 </svg>

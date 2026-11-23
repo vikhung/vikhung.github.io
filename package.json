@@ -1,0 +1,13 @@
+{
+  "name": "vikhung.github.io",
+  "private": true,
+  "description": "Vik 的數位筆記本（GitHub Pages 個人網誌）",
+  "scripts": {
+    "start": "node tools/blog.js serve",
+    "new": "node tools/blog.js new",
+    "del": "node tools/blog.js del",
+    "touch": "node tools/blog.js touch",
+    "build": "node tools/blog.js build",
+    "banner": "node tools/banners.js"
+  }
+}
